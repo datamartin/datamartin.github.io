@@ -1,6 +1,17 @@
 theme: jekyll-theme-slate
-title: KMKT praktikumid
+permalink:        pretty
 
+# Setup
+title:            Kvantitatiivsed mudelid käitumisteadustes praktikumide materjalid
+url:              https://github.com/datamartin/datamartin.github.io
+paginate:         1
+baseurl:          /2017
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/datamartin/datamartin.github.io
 
 pages_list:       
   Praktikumid: '/praktikumid'
+  Projektid: '/projektid'
