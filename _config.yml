@@ -3,6 +3,7 @@ theme: jekyll-theme-slate
 title:            Kvantitatiivsed mudelid käitumisteadustes praktikumide materjalid
 url:              https://github.com/datamartin/datamartin.github.io
 paginate:         1
+baseurl:          /
 
 # Custom vars
 version:          1.0.0
