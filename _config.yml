@@ -4,6 +4,7 @@ title:            Kvantitatiivsed mudelid käitumisteadustes praktikumide materj
 url:              https://github.com/datamartin/datamartin.github.io
 
 # Custom vars
+version:          1.0.0
 github:
   repo:           https://github.com/datamartin/datamartin.github.io
 
