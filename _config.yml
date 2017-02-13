@@ -1,2 +1,6 @@
 theme: jekyll-theme-slate
 title: KMKT praktikumid
+
+
+pages_list:       
+  Praktikumid: '/praktikumid'
