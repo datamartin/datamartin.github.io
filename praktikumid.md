@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Praktikumimaterjalid
+title: Praktikumid
 ---
 
 Praktikumi materjalid täienevad jooksvalt.
