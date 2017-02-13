@@ -1,4 +1,5 @@
-permalink:        pretty
+theme: jekyll-theme-tactile
+
 # Setup
 title:            Kvantitatiivsed mudelid käitumisteadustes praktikumide materjalid
 url:              https://github.com/datamartin/datamartin.github.io
