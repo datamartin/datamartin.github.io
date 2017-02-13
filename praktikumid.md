@@ -11,4 +11,4 @@ Praktikumi materjalid täienevad jooksvalt.
 
 Sissejuhatus
 
-* [Materjal](../praktikum1). 
+* [Materjal](../1praktikum). 
