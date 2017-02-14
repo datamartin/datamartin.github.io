@@ -40,16 +40,15 @@ Laadige alla praktikumi koodi ja andmeid sisaldav zip-fail Moodle'ist. Pakkige z
 koodifail praktikum1.R ja andmefail praktikum1.RData.  
 
 Käivitame RStudio. Avanema peaks allolev pilt.
-<div style="width:500px; height=500px">
+
 ![Joonis 1. RStudio ülevaade](rstudio1.png)
-</div>
+
 
 Avame zip-failis olnud koodifaili praktikum1.R ja andmefaili prakitkum1.RData kasutades ülaloleval joonisel osutatud nuppe või RStudio aknas paremal all osas paiknevat paneeli *Files*. Kui soovime olemasoleva koodifaili asemel avada hoopis uut tühja koodifaili, siis seda saab teha valides RStudio menüü-ribalt *File* ja sellest *New File* -> *R Script*.
 
 Nüüd peaks meil RStudio aknas lahti olemas 4 osa. Erinevate osade funktsioonid on toodud allpool.
-<div style="width:500px; height=500px">
 ![Joonis 2. RStudio erinevad aknad](rstudio2.png)
-</div>
+
 
 
 **Üleval vasakul** olevasse ossa kirjutame koodi, mille abil ütleme R-ile, mida me tahame, et see andmetega teeks. Kuidas koodi R-ile saatmine käib? Kui soovime saata ainult ühte rida korraga tuleb kõige pealt klõpsata sellel koodireal, mida soovime R-ile saata (nii et kursor hakkab vilkuma sellel real) ja seejärel vajutada koodiredaktori paneeli paremal ülaosas paiknevat nuppu *Run*. Nupu asemel võib kasutada ka klahvikombinatsiooni *Ctrl + Enter* (Maci arvutitel *Cmd + Enter*). Kui soovime saata mitut koodirida korraga, tuleb need koodiredaktoris valida (st teha hiirega siniseks) ja seejärel vajutada *Run*-nuppu või klahvikombinatsiooni.
@@ -70,14 +69,13 @@ Nüüd peaks meil RStudio aknas lahti olemas 4 osa. Erinevate osade funktsioonid
 * *History*: R-i konsooli käskude ajalugu.
 Natuke lähemalt *Environment* paneelist. Kui avasite alguses andmefaili *praktikum1.RData*, peaks paneel välja nägema nagu alloleval pildil. Muutuja *tabel* viitab konkreetse andmetabeli nimele. Erinevalt näiteks SPSS-ist võivad R-i andmefailid sisaldada rohkem kui ühte andmetabelit (ja lisaks andmetabelitele ka teistsuguseid andmestruktuure). Igal andmetabelil on oma nimi ja tabelis olevad andmed saamegi hiljem kätte just selle nime abil. 200 obs of 10 variables näitab, et tabelis on 200 rida ja 10 tulpa.
 
-<div style="width:400px; height=400px">
 ![Joonis 3. RStudio Global Environment](rstudio3.png)
-</div>
+
 
 Klõpsates tabeli nime ees oleval sinisel nupul peaks avanema allolev pilt.
-<div style="width:400px; height=400px">
+
 ![Joonis 4. RStudio ülevaade](rstudio4.png)
-</div>
+
 
 
 Meile näidatakse tabelis olevate tulpade nimesid, andmetüüpe ja esimesi andmepunkte. Esimene tulp/muutuja kannab nime "vanus". Andmetüüp on *int* , mis tuleb inglisekeelsest sõnast *integer* ehk täisarv, st. tegemist on tulbaga, milles sisalduvad andmed on täisarvud. (Teine R-is levinud numbriliste andmete tüüp on *num* ehk *numeric*, mis võib sisaldada ka komakohaga arve.) Teine tulp
@@ -108,184 +106,181 @@ Siin tutvustame kolme võimalust:
 R'is saab kergesti kasutada funktsioone muutujate peal eraldi. Et arvutada tabelis oleva muutuja kohta statistilisi näitajaid, peame teadma, kuidas tulbas olevad andmed koodi abil kätte saada. Selleks peame teadma nii andmetabeli nime kui ka tulba nime või tulba järjekorranumbrit. Tulbas vanus olevad andmed saame muutuja nime abil kätte nii:  
 
 Dollari märgi abil:   
-<div class="fold o">
+
 ```{r}
 tabel$vanus
 ```
-</div>
+
 Nurgeliste sulgudega:
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 tabel[,1]
 ```
-</div>
+
 Funktsiooniga *subset*:
-<div class="fold o">
-```{r}
+
+```{r , eval = FALSE}
 subset(tabel, select = vanus) # üks veerg
 subset(tabel, select = c(vanus, elukoht)) # kaks veergu. NB! lisasime c() - see näitab, et anname argumendiks vektori. 
 ```
-</div>
+
 Kuidas eemaldada veerge?  
 Kasutage miinus märki:  
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 subset(tabel, select = -c(vanus, elukoht))
 ```
-</div>
+
 **Ridade eraldamine**
 Järjekorra numbri abil saab ridasid samamoodi eraldada nagu veerge:
-<div class="fold o">
-```{r}
+
+```{r , eval = FALSE}
 tabel[1,] #esimne rida
 ```
-</div>
 
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 tabel[1:5,] #esimesed viis rida
 ```
-</div>
+
 Kuidas valida ridu, mis vastavad teatud tingimustele. Proovime näiteks võtta andmestikust need read, kus vaadeldava isiku vanus on alla 30.
 Nurgeliste sulgudega:
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 tabel[tabel$vanus<30,]
 ```
-</div>
+
 Funktsiooniga *subset*:
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 subset(tabel, vanus < 30)
 ```
-</div>
+
 Sageli on vaja võtta andmetest välja read, mis on ühe muutuja suhtes võrdesed. Näiteks püüame eraldada andmetest kõik read, kus elukoha väärtusega on "maa". Saame kasutada juba tuttavat ridade ja veergude määratlust:  
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 tabel[tabel$elukoht == "maa",] 
 ```
-</div>
+
 Samasuguse tulemuse saame ka funktsiooniga *subset*  
-<div class="fold o">
-```{r}
+
+```{r, eval = FALSE}
 subset(tabel, elukoht == "maa")
 ```
-</div>
+
 #Kirjeldav Statistika
 Nüüd, kui teame, kuidas anda R'ile edasi ainult üks muutuja andmestikus, proovime saada selgemat ülevaadet muutujast *vanus*.  
 **Kekmise** vanuse saame andes funktsioonile *mean* argumendiks muutuja *vanus*:
-<div class="fold o">
+
 ```{r}
 mean(tabel$vanus)
 ```
-</div>
+
 **Mediaani** saame funktsiooni *median* abil
-<div class="fold o">
+
 ```{r}
 median(tabel$vanus)
 ```
-</div>
+
 **Standardhälve**
-<div class="fold o">
+
 ```{r}
 sd(tabel$vanus)
 ```
-</div>
+
 **Miinimum** ja **maksimum**
-<div class="fold o">
+
 ```{r}
 min(tabel$vanus)
 max(tabel$vanus)
 ```
-</div>
+
 **Puuduvad väärtused**  
 Kui tulbas esineb puuduvaid väärtusi, annab R meile statistiku väärtuseks samuti puuduva väärtuse ehk NA (*not available*):
-<div class="fold o">
+
 ```{r}
 mean(tabel$sotsiaalsus)
 ```
-</div>
+
 Selleks, et puuduvad väärtused arvutustest välja jätta tuleb kirjeldava statistika funktsioonidele ette anda täiendav argument na.rm=TRUE
-<div class="fold o">
+
 ```{r}
 mean(tabel$sotsiaalsus, na.rm=TRUE)
 median(tabel$sotsiaalsus, na.rm=TRUE)
 ```
-</div>
+
 Kategooriaid sisaldava tunnuse kirjeldamisel on abiks **sagedustabel**:
-<div class="fold o">
+
 ```{r}
 table(tabel$elukoht)
 ```
-</div>
+
 Protsentuaalse jaotuse saame lisades sagedustabeli ümber funktsiooni *prop.table*:
-<div class="fold o">
+
 ```{r}
 prop.table(table(tabel$elukoht))
 ```
-</div>
+
 
 #Korrelatsioon  
 Kahe muutuja vahelise korrelatsioonikordaja väätuse saame andes need muutujad argumentideks funktsioonile *cor*:
-<div class="fold o">
+
 ```{r}
 cor(tabel$vanus, tabel$depressioon)
 ```
-</div>
+
 
 Funktsioonile *cor* saab ette anda ka mitu muutujat korraga kasutades andmetabeli tulpade järjekorranumbreid. Sellisel juhul tagastatakse meile korrelatsioonimaatriks.
-<div class="fold o">
+
 ```{r}
 cor(tabel[,3:7])
 ```
-</div>
+
 
 Nagu näha on mõnede korrelatsioonikordajate väärtuseks puuduv väärtus ehk NA. Funktsiooni *cor* puhul käib puuduvate väärtuste välja jätmine argumendi *use* abil. *use="complete.obs"* jätab kasvõi ühe puuduva väärtusega inimese andmed välja kõigist arvutustest. *use="pairwise"* jätab inimese välja aga ainult nendest arvutustest, mille puhul tal esineb puuduvaid andmeid:
-<div class="fold o">
+
 ```{r}
 cor(tabel[,3:7], use="complete.obs")
 ```
-</div>
+
 
 Kuna antud juhul on puuduvaid andmeid väga vähe, on kahe puuduvate andmete eemaldamise meetodi kasutamise puhul erinevused vaevum?rgatavad:
-<div class="fold o">
+
 ```{r}
 cor(tabel[,3:7], use="pairwise")
 ```
-</div>
+
 
 Korrelatsioonimaatriksit on enamasti parem jälgida väiksema komakohtade arvu puhul.
 Ümardamise saame lisades funktsiooni cor ümber funktsiooni round ja andes sellele ette soovitava komakohtade arvu.
-<div class="fold o">
+
 ```{r}
 round(cor(tabel[,3:7], use="complete.obs"), 2)
 ```
-</div>
+
 
 Vahel soovime teada ka korrelatsioonikordaja statistilist olulisust. Selle saame funktsiooni cor.test abil.
-<div class="fold o">
+
 ```{r}
 cor.test(tabel$neurootilisus, tabel$stateanx)
 ```
-</div>
 
 Funktsiooni väljund näeb välja selline:
 P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $4.809 \times 10^{-13}$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
 
 #T-test
 T-testi abil saab võrrelda, kas kahe grupi keskmised erinevad statistiliselt olulisel määral. T-testi saab R-is kätte andes funktsioonile t.test ette numbrilise tunnuse (antud juhul vanus) ja grupeeriva tunnuse (antud juhul elukoht) alljärgneval kujul:
-<div class="fold o">
+
 ```{r}
 t.test(tabel$vanus~tabel$elukoht)
 ```
-</div>
+
 
 või sellisel kujul:
-<div class="fold o">
 ```{r, message=FALSE, warning=FALSE}
 t.test(vanus~elukoht, data=tabel)
 ```
-</div>
+
 
 ##Ülesanded
 
