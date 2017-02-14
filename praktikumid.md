@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Praktikumid
 ---
 
@@ -9,6 +9,11 @@ Praktikumi materjalid täienevad jooksvalt.
 
 17.02.2017 
 
-Sissejuhatus
+Teemad: ....
 
-* [Materjal](../1praktikum). 
+* [1. praktikum](../_1praktikum). 
+
+
+## Praktikum 2
+
+...
