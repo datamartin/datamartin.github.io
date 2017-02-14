@@ -24,18 +24,18 @@ koodifail praktikum1.R ja andmefail praktikum1.RData.
 
 Käivitame RStudio. Avanema peaks allolev pilt.
 
-![Joonis 1. RStudio ülevaade](rstudio1.png?raw=true)
+![Joonis 1. RStudio ülevaade](_1praktikum/rstudio1.png?raw=true)
 
 ```r
-knitr::include_graphics("rstudio1.png")
+knitr::include_graphics("_1praktikum/rstudio1.png")
 ```
 
-<img src="rstudio1.png" width="500px" height="500px" />
+<img src="_1praktikum/rstudio1.png" width="500px" height="500px" />
 
 Avame zip-failis olnud koodifaili praktikum1.R ja andmefaili prakitkum1.RData kasutades ülaloleval joonisel osutatud nuppe või RStudio aknas paremal all osas paiknevat paneeli *Files*. Kui soovime olemasoleva koodifaili asemel avada hoopis uut tühja koodifaili, siis seda saab teha valides RStudio menüü-ribalt *File* ja sellest *New File* -> *R Script*.
 
 Nüüd peaks meil RStudio aknas lahti olemas 4 osa. Erinevate osade funktsioonid on toodud allpool.
-![Joonis 2. RStudio erinevad aknad](rstudio2.png)
+![Joonis 2. RStudio erinevad aknad](_1praktikum/rstudio2.png)
 
 
 
