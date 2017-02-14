@@ -1,13 +1,13 @@
 theme: jekyll-theme-cayman
 
 # Setup
-title:            Kvantitatiivsed mudelid käitumisteadustes praktikumide materjalid (SHPH.00.004)
+title:            Kvantitatiivsed mudelid käitumisteadustes (SHPH.00.004)
 url:              https://github.com/datamartin/datamartin.github.io
-
+pages_list:
+  Praktikumid: '/praktikumid'
 # Custom vars
 version:          1.0.0
 github:
   repo:           https://github.com/datamartin/datamartin.github.io
 
-pages_list:
-  Praktikumid: '/praktikumid'
+
