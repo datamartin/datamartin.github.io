@@ -195,8 +195,7 @@ Klõpsates tabeli nime ees oleval sinisel nupul peaks avanema allolev pilt.
 </div>
 </div>
 <p>Meile näidatakse tabelis olevate tulpade nimesid, andmetüüpe ja esimesi andmepunkte. Esimene tulp/muutuja kannab nime “vanus”. Andmetüüp on <em>int</em> , mis tuleb inglisekeelsest sõnast <em>integer</em> ehk täisarv, st. tegemist on tulbaga, milles sisalduvad andmed on täisarvud. (Teine R-is levinud numbriliste andmete tüüp on <em>num</em> ehk <em>numeric</em>, mis võib sisaldada ka komakohaga arve.) Teine tulp kannab nime “elukoht”&quot; ja selle tüübiks on märgitud <em>Factor</em> w/ 2 levels „maa“ , „linn“. <em>Factor</em> tähendab R-i kontekstis kategooriaid sisaldavat muutujat. Antud juhul on neid kategooriaid 2 tükki: „maa“ ja „linn“. Kõik ülej??nud tabelis olevad muutujad sisaldavad sarnaselt esimese tulbaga täisarvulist tüüpi andmeid (<em>int</em>).</p>
-Samasuguse ülevaate saate ka siis, kui kirjutate kasutate funktsiooni <em>str</em> ja lisate argumendiks vastava andmetabeli. Antud juhul:
-<div class="fold o">
+<p>Samasuguse ülevaate saate ka siis, kui kirjutate kasutate funktsiooni <em>str</em> ja lisate argumendiks vastava andmetabeli. Antud juhul:</p>
 <pre class="r"><code>load(&quot;praktikum1.RData&quot;)
 str(tabel)</code></pre>
 <pre><code>## 'data.frame':    200 obs. of  10 variables:
@@ -210,7 +209,6 @@ str(tabel)</code></pre>
 ##  $ depressioon  : int  8 6 3 3 8 5 7 0 3 8 ...
 ##  $ traitanx     : int  46 33 47 29 53 39 53 29 27 40 ...
 ##  $ stateanx     : int  60 39 39 29 52 34 54 29 38 39 ...</code></pre>
-</div>
 <p>Klõpsates hiirega andmetabeli nimel, avaneb andmetabel ka visuaalsel kujul.</p>
 </div>
 <div id="andmetega-manipuleerimine" class="section level1">

@@ -67,7 +67,7 @@ Meile näidatakse tabelis olevate tulpade nimesid, andmetüüpe ja esimesi andme
 kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „maa“ , „linn“. *Factor* tähendab R-i kontekstis kategooriaid sisaldavat muutujat. Antud juhul on neid kategooriaid 2 tükki: „maa“ ja „linn“. Kõik ülej??nud tabelis olevad muutujad sisaldavad sarnaselt esimese tulbaga täisarvulist tüüpi andmeid (*int*).
 
 Samasuguse ülevaate saate ka siis, kui kirjutate kasutate funktsiooni *str* ja lisate argumendiks vastava andmetabeli. Antud juhul:
-<div class="fold o">
+
 
 ```r
 load("praktikum1.RData")
@@ -87,7 +87,7 @@ str(tabel)
 ##  $ traitanx     : int  46 33 47 29 53 39 53 29 27 40 ...
 ##  $ stateanx     : int  60 39 39 29 52 34 54 29 38 39 ...
 ```
-</div>
+
 Klõpsates hiirega andmetabeli nimel, avaneb andmetabel ka visuaalsel kujul.
 
 #Andmetega manipuleerimine
