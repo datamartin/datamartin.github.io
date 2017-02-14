@@ -9,7 +9,7 @@ Praktikumi materjalid täienevad jooksvalt.
 
 17.02.2017 
 
-Teemad: ....
+Teemad: Harjutusi rakendustarkvaraga R. Kirjeldav statistika, korrelatsiooni- ja regressioonianalüüs.
 
 * [Praktikumi materjalid](../1praktikum). 
 

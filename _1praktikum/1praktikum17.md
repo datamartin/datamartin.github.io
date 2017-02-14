@@ -4,7 +4,8 @@ Martin Kolnes, Dmitri Rozgonjuk, Karin Täht
 <script src="hideOutput.js"></script>
 
 
-#Praktikumi eesmärgid
+  
+# Praktikumi eesmärgid
 
 * RStudio kasutamisega tutvumine: andmete laadimine R'i, andmeväljadele viitamine R'is  
 * Üldine kirjeldav statistika: keskmine, mediaan, stadnadrhälve jne  
@@ -14,8 +15,8 @@ Martin Kolnes, Dmitri Rozgonjuk, Karin Täht
 **RStudio paigaldamine**  
 Arvutiklassi arvutites on need programmid juba olemas, aga kui on soovi paigaldada RStudio ka enda arvutisse, siis kasutage järgnevaid linke:  
 
-* programmeerimiskeel R -  http://ftp.eenet.ee/pub/cran/  
-* RStudio - http://www.rstudio.com/products/rstudio/download/  
+* programmeerimiskeel R -  http://ftp.eenet.ee/pub/cran  
+* RStudio - http://www.rstudio.com/products/rstudio/download
 
 # RStudio kasutamine   
 
@@ -25,12 +26,6 @@ koodifail praktikum1.R ja andmefail praktikum1.RData.
 Käivitame RStudio. Avanema peaks allolev pilt.
 
 ![Joonis 1. RStudio ülevaade](rstudio1.png)
-
-```r
-knitr::include_graphics("rstudio1.png")
-```
-
-<img src="rstudio1.png" width="500px" height="500px" />
 
 Avame zip-failis olnud koodifaili praktikum1.R ja andmefaili prakitkum1.RData kasutades ülaloleval joonisel osutatud nuppe või RStudio aknas paremal all osas paiknevat paneeli *Files*. Kui soovime olemasoleva koodifaili asemel avada hoopis uut tühja koodifaili, siis seda saab teha valides RStudio menüü-ribalt *File* ja sellest *New File* -> *R Script*.
 
@@ -67,7 +62,7 @@ Klõpsates tabeli nime ees oleval sinisel nupul peaks avanema allolev pilt.
 
 
 Meile näidatakse tabelis olevate tulpade nimesid, andmetüüpe ja esimesi andmepunkte. Esimene tulp/muutuja kannab nime "vanus". Andmetüüp on *int* , mis tuleb inglisekeelsest sõnast *integer* ehk täisarv, st. tegemist on tulbaga, milles sisalduvad andmed on täisarvud. (Teine R-is levinud numbriliste andmete tüüp on *num* ehk *numeric*, mis võib sisaldada ka komakohaga arve.) Teine tulp
-kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „maa“ , „linn“. *Factor* tähendab R-i kontekstis kategooriaid sisaldavat muutujat. Antud juhul on neid kategooriaid 2 tükki: „maa“ ja „linn“. Kõik ülej??nud tabelis olevad muutujad sisaldavad sarnaselt esimese tulbaga täisarvulist tüüpi andmeid (*int*).
+kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „maa“ , „linn“. *Factor* tähendab R-i kontekstis kategooriaid sisaldavat muutujat. Antud juhul on neid kategooriaid 2 tükki: „maa“ ja „linn“. Kõik ülejäänud tabelis olevad muutujad sisaldavad sarnaselt esimese tulbaga täisarvulist tüüpi andmeid (*int*).
 
 Samasuguse ülevaate saate ka siis, kui kirjutate kasutate funktsiooni *str* ja lisate argumendiks vastava andmetabeli. Antud juhul:
 
