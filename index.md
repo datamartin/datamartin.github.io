@@ -1,4 +1,8 @@
-## Kursusest
+---
+layout: default
+---
+
+# [](#header-1)Header 1
 
 Tutvustav tekst....
 
