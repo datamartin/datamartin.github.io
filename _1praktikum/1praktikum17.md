@@ -24,7 +24,7 @@ koodifail praktikum1.R ja andmefail praktikum1.RData.
 
 Käivitame RStudio. Avanema peaks allolev pilt.
 
-![Joonis 1. RStudio ülevaade](rstudio1.png)
+![Joonis 1. RStudio ülevaade](rstudio1.png?raw=true)
 
 ```r
 knitr::include_graphics("rstudio1.png")
