@@ -9,7 +9,7 @@ Praktikumi materjalid täienevad jooksvalt.
 
 17.02.2017 
 
-Sissejuhatus
+Teemad: ....
 
 * [1. praktikum](../_1praktikum). 
 
