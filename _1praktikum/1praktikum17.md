@@ -26,6 +26,11 @@ Käivitame RStudio. Avanema peaks allolev pilt.
 
 ![Joonis 1. RStudio ülevaade](rstudio1.png)
 
+```r
+knitr::include_graphics("rstudio1.png")
+```
+
+<img src="rstudio1.png" width="500px" height="500px" />
 
 Avame zip-failis olnud koodifaili praktikum1.R ja andmefaili prakitkum1.RData kasutades ülaloleval joonisel osutatud nuppe või RStudio aknas paremal all osas paiknevat paneeli *Files*. Kui soovime olemasoleva koodifaili asemel avada hoopis uut tühja koodifaili, siis seda saab teha valides RStudio menüü-ribalt *File* ja sellest *New File* -> *R Script*.
 
