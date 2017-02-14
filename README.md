@@ -1,1 +1,2 @@
-# Ülevaade ainest
+# Aine "Kvantitatiivsed mudelid käitumisteadustes" materjalid
+# 2017
