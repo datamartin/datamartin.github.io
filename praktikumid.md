@@ -11,7 +11,7 @@ Praktikumi materjalid täienevad jooksvalt.
 
 Teemad: ....
 
-* [1. praktikum](../_1praktikum). 
+* [Praktikumi materjalid](../1praktikum). 
 
 
 ## Praktikum 2
