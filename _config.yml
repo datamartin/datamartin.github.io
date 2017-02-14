@@ -9,5 +9,5 @@ version:          1.0.0
 github:
   repo:           https://github.com/datamartin/datamartin.github.io
 
-pages_list:       
+pages_list:
   Praktikumid: '/praktikumid'
