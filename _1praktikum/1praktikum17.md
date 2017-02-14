@@ -12,7 +12,7 @@ Martin Kolnes, Dmitri Rozgonjuk, Karin Täht
 * Korrelatsiooni kasutamine  
 * T-testi kasutamine  
 
-**RStudio paigaldamine**  
+# RStudio paigaldamine  
 Arvutiklassi arvutites on need programmid juba olemas, aga kui on soovi paigaldada RStudio ka enda arvutisse, siis kasutage järgnevaid linke:  
 
 * programmeerimiskeel R -  http://ftp.eenet.ee/pub/cran  
@@ -72,23 +72,9 @@ load("praktikum1.RData")
 str(tabel)
 ```
 
-```
-## 'data.frame':	200 obs. of  10 variables:
-##  $ vanus        : int  42 52 26 27 18 46 28 60 23 51 ...
-##  $ elukoht      : Factor w/ 2 levels "maa","linn": 2 2 1 1 2 1 1 2 1 2 ...
-##  $ sotsiaalsus  : int  123 140 97 153 96 138 134 138 100 137 ...
-##  $ meelekindlus : int  109 115 96 114 110 94 120 118 97 128 ...
-##  $ ekstravertsus: int  118 91 62 123 63 94 68 97 131 126 ...
-##  $ neurootilisus: int  123 81 102 58 104 94 69 60 67 103 ...
-##  $ avatus       : int  149 161 86 138 144 134 112 133 121 133 ...
-##  $ depressioon  : int  8 6 3 3 8 5 7 0 3 8 ...
-##  $ traitanx     : int  46 33 47 29 53 39 53 29 27 40 ...
-##  $ stateanx     : int  60 39 39 29 52 34 54 29 38 39 ...
-```
-
 Klõpsates hiirega andmetabeli nimel, avaneb andmetabel ka visuaalsel kujul.
 
-#Andmetega manipuleerimine
+# Andmetega manipuleerimine
 
 Enne alustamist veenduge, et Teil oleks RStudio töökeskkonnas (*Global Environment*) vastav andmetabel olemas (Joonis 3.).  
 
@@ -108,18 +94,6 @@ Dollari märgi abil:
 
 ```r
 tabel$vanus
-```
-
-```
-##   [1] 42 52 26 27 18 46 28 60 23 51 51 66 41 18 18 23 64 36 59 25 44 36 53
-##  [24] 48 42 27 50 37 64 42 47 34 55 21 48 49 43 45 51 52 34 42 65 18 38 48
-##  [47] 48 41 51 46 37 46 65 32 60 43 31 60 55 61 24 30 64 58 32 50 62 24 23
-##  [70] 56 37 36 38 62 32 34 69 20 52 69 47 30 44 69 28 57 24 20 19 60 33 50
-##  [93] 39 26 59 57 24 57 62 51 23 42 62 28 24 49 22 69 37 42 51 18 39 52 65
-## [116] 49 46 39 30 22 69 41 26 49 42 29 65 51 63 59 58 37 51 51 26 48 26 61
-## [139] 50 52 46 34 26 54 35 25 41 36 42 34 24 20 29 23 65 36 34 59 35 35 35
-## [162] 49 59 54 25 50 37 58 31 69 49 70 56 64 29 67 58 56 42 47 68 40 33 47
-## [185] 59 69 31 31 50 66 63 47 41 65 51 53 70 19 63 60
 ```
 
 Nurgeliste sulgudega:
@@ -197,19 +171,11 @@ Nüüd, kui teame, kuidas anda R'ile edasi ainult üks muutuja andmestikus, proo
 mean(tabel$vanus)
 ```
 
-```
-## [1] 44.19
-```
-
 **Mediaani** saame funktsiooni *median* abil
 
 
 ```r
 median(tabel$vanus)
-```
-
-```
-## [1] 46
 ```
 
 **Standardhälve**
@@ -219,27 +185,12 @@ median(tabel$vanus)
 sd(tabel$vanus)
 ```
 
-```
-## [1] 14.61478
-```
-
 **Miinimum** ja **maksimum**
 
 
 ```r
 min(tabel$vanus)
-```
-
-```
-## [1] 18
-```
-
-```r
 max(tabel$vanus)
-```
-
-```
-## [1] 70
 ```
 
 **Puuduvad väärtused**  
@@ -250,27 +201,12 @@ Kui tulbas esineb puuduvaid väärtusi, annab R meile statistiku väärtuseks sa
 mean(tabel$sotsiaalsus)
 ```
 
-```
-## [1] NA
-```
-
 Selleks, et puuduvad väärtused arvutustest välja jätta tuleb kirjeldava statistika funktsioonidele ette anda täiendav argument na.rm=TRUE
 
 
 ```r
 mean(tabel$sotsiaalsus, na.rm=TRUE)
-```
-
-```
-## [1] 126.0201
-```
-
-```r
 median(tabel$sotsiaalsus, na.rm=TRUE)
-```
-
-```
-## [1] 126
 ```
 
 Kategooriaid sisaldava tunnuse kirjeldamisel on abiks **sagedustabel**:
@@ -280,23 +216,11 @@ Kategooriaid sisaldava tunnuse kirjeldamisel on abiks **sagedustabel**:
 table(tabel$elukoht)
 ```
 
-```
-## 
-##  maa linn 
-##   87  113
-```
-
 Protsentuaalse jaotuse saame lisades sagedustabeli ümber funktsiooni *prop.table*:
 
 
 ```r
 prop.table(table(tabel$elukoht))
-```
-
-```
-## 
-##   maa  linn 
-## 0.435 0.565
 ```
 
 
@@ -308,31 +232,12 @@ Kahe muutuja vahelise korrelatsioonikordaja väätuse saame andes need muutujad 
 cor(tabel$vanus, tabel$depressioon)
 ```
 
-```
-## [1] 0.01107786
-```
-
 
 Funktsioonile *cor* saab ette anda ka mitu muutujat korraga kasutades andmetabeli tulpade järjekorranumbreid. Sellisel juhul tagastatakse meile korrelatsioonimaatriks.
 
 
 ```r
 cor(tabel[,3:7])
-```
-
-```
-##               sotsiaalsus meelekindlus ekstravertsus neurootilisus
-## sotsiaalsus             1           NA            NA            NA
-## meelekindlus           NA            1            NA            NA
-## ekstravertsus          NA           NA    1.00000000    0.00672297
-## neurootilisus          NA           NA    0.00672297    1.00000000
-## avatus                 NA           NA    0.46325180    0.28952552
-##                  avatus
-## sotsiaalsus          NA
-## meelekindlus         NA
-## ekstravertsus 0.4632518
-## neurootilisus 0.2895255
-## avatus        1.0000000
 ```
 
 
@@ -343,42 +248,12 @@ Nagu näha on mõnede korrelatsioonikordajate väärtuseks puuduv väärtus ehk 
 cor(tabel[,3:7], use="complete.obs")
 ```
 
-```
-##               sotsiaalsus meelekindlus ekstravertsus neurootilisus
-## sotsiaalsus    1.00000000   0.44295339  0.4719586343 -0.0648064428
-## meelekindlus   0.44295339   1.00000000  0.2512301669  0.0318049429
-## ekstravertsus  0.47195863   0.25123017  1.0000000000  0.0002155849
-## neurootilisus -0.06480644   0.03180494  0.0002155849  1.0000000000
-## avatus         0.42299392   0.30541061  0.4615624091  0.2848434787
-##                  avatus
-## sotsiaalsus   0.4229939
-## meelekindlus  0.3054106
-## ekstravertsus 0.4615624
-## neurootilisus 0.2848435
-## avatus        1.0000000
-```
-
 
 Kuna antud juhul on puuduvaid andmeid väga vähe, on kahe puuduvate andmete eemaldamise meetodi kasutamise puhul erinevused vaevum?rgatavad:
 
 
 ```r
 cor(tabel[,3:7], use="pairwise")
-```
-
-```
-##               sotsiaalsus meelekindlus ekstravertsus neurootilisus
-## sotsiaalsus    1.00000000   0.44295339    0.47088602   -0.06478416
-## meelekindlus   0.44295339   1.00000000    0.25133709    0.03217925
-## ekstravertsus  0.47088602   0.25133709    1.00000000    0.00672297
-## neurootilisus -0.06478416   0.03217925    0.00672297    1.00000000
-## avatus         0.42137804   0.30771287    0.46325180    0.28952552
-##                  avatus
-## sotsiaalsus   0.4213780
-## meelekindlus  0.3077129
-## ekstravertsus 0.4632518
-## neurootilisus 0.2895255
-## avatus        1.0000000
 ```
 
 
@@ -390,15 +265,6 @@ Korrelatsioonimaatriksit on enamasti parem jälgida väiksema komakohtade arvu p
 round(cor(tabel[,3:7], use="complete.obs"), 2)
 ```
 
-```
-##               sotsiaalsus meelekindlus ekstravertsus neurootilisus avatus
-## sotsiaalsus          1.00         0.44          0.47         -0.06   0.42
-## meelekindlus         0.44         1.00          0.25          0.03   0.31
-## ekstravertsus        0.47         0.25          1.00          0.00   0.46
-## neurootilisus       -0.06         0.03          0.00          1.00   0.28
-## avatus               0.42         0.31          0.46          0.28   1.00
-```
-
 
 Vahel soovime teada ka korrelatsioonikordaja statistilist olulisust. Selle saame funktsiooni cor.test abil.
 
@@ -407,43 +273,15 @@ Vahel soovime teada ka korrelatsioonikordaja statistilist olulisust. Selle saame
 cor.test(tabel$neurootilisus, tabel$stateanx)
 ```
 
-```
-## 
-## 	Pearson's product-moment correlation
-## 
-## data:  tabel$neurootilisus and tabel$stateanx
-## t = 7.7489, df = 197, p-value = 4.808e-13
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  0.3690389 0.5832042
-## sample estimates:
-##       cor 
-## 0.4833202
-```
-
 Funktsiooni väljund näeb välja selline:
-P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $4.809 \times 10^{-13}$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
+P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $$4.809 \times 10^{-13}$$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
 
-#T-test
+# T-test
 T-testi abil saab võrrelda, kas kahe grupi keskmised erinevad statistiliselt olulisel määral. T-testi saab R-is kätte andes funktsioonile t.test ette numbrilise tunnuse (antud juhul vanus) ja grupeeriva tunnuse (antud juhul elukoht) alljärgneval kujul:
 
 
 ```r
 t.test(tabel$vanus~tabel$elukoht)
-```
-
-```
-## 
-## 	Welch Two Sample t-test
-## 
-## data:  tabel$vanus by tabel$elukoht
-## t = -1.741, df = 188.74, p-value = 0.08331
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -7.660306  0.477720
-## sample estimates:
-##  mean in group maa mean in group linn 
-##           42.16092           45.75221
 ```
 
 
@@ -453,22 +291,8 @@ või sellisel kujul:
 t.test(vanus~elukoht, data=tabel)
 ```
 
-```
-## 
-## 	Welch Two Sample t-test
-## 
-## data:  vanus by elukoht
-## t = -1.741, df = 188.74, p-value = 0.08331
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -7.660306  0.477720
-## sample estimates:
-##  mean in group maa mean in group linn 
-##           42.16092           45.75221
-```
 
-
-##Ülesanded
+## Ülesanded
 
 1. Leia avatuse mediaanväärtus (kirjuta kood allolevale reale)
 
@@ -499,9 +323,8 @@ t.test(vanus~elukoht, data=tabel)
 ## Mõned huvitavad lingid
 Allpool on toodud mõned veebilehed, mis võivad osutuda kasulikuks, kui soovite R-i omal käel natuke lähemalt tundma õppida.
 
-* http://tryr.codeschool.com/ : l?hemat sorti interaktiivne veebikursus R-i põhitõdedest  
-* https://www.datacamp.com/courses/introduction-to-r : natuke pikem interaktiivne veebikursus.  
-* http://health.adelaide.edu.au/psychology/ccs/docs/lsr/lsr-0.4.pdf : psühholoogiatudengitele suunatud raamat statistikast ja R-ist. Raamatu esimese osa, mis käitleb teile ilmselt juba tuttavaid uurimismeetoditega seotud küimusi võib julgelt vahele jätta ja asuda kohe teise osa kallale.  
-* http://statmethods.net/ : lehekülg, kus on kategooriate kaupa ?ra toodud erinevad R-iga seotud teemad.  
+* http://tryr.codeschool.com/ - interaktiivne veebikursus R-i põhitõdedest  
+* http://health.adelaide.edu.au/psychology/ccs/docs/lsr/lsr-0.4.pdf - psühholoogiatudengitele suunatud raamat statistikast ja R-ist. 
+* http://statmethods.net/
 
 

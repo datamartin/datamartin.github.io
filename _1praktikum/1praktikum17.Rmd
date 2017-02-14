@@ -7,6 +7,7 @@ output:
   html_document:
     css: style.css
     keep_md: true
+    code_folding: hide
   github_document:
     html_preview: no
   pdf_document:
@@ -18,7 +19,7 @@ output:
 <script src="hideOutput.js"></script>
 ```{r global_options, include=FALSE, echo = F}
 knitr::opts_chunk$set(fig.width=12, fig.height=8,
-                      eval=TRUE, warning=FALSE, message=FALSE)
+                      eval=FALSE, warning=FALSE, message=FALSE)
 ```
 
   
@@ -29,7 +30,7 @@ knitr::opts_chunk$set(fig.width=12, fig.height=8,
 * Korrelatsiooni kasutamine  
 * T-testi kasutamine  
 
-**RStudio paigaldamine**  
+# RStudio paigaldamine  
 Arvutiklassi arvutites on need programmid juba olemas, aga kui on soovi paigaldada RStudio ka enda arvutisse, siis kasutage järgnevaid linke:  
 
 * programmeerimiskeel R -  http://ftp.eenet.ee/pub/cran  
@@ -90,7 +91,7 @@ str(tabel)
 
 Klõpsates hiirega andmetabeli nimel, avaneb andmetabel ka visuaalsel kujul.
 
-#Andmetega manipuleerimine
+# Andmetega manipuleerimine
 
 Enne alustamist veenduge, et Teil oleks RStudio töökeskkonnas (*Global Environment*) vastav andmetabel olemas (Joonis 3.).  
 
@@ -266,9 +267,9 @@ cor.test(tabel$neurootilisus, tabel$stateanx)
 ```
 
 Funktsiooni väljund näeb välja selline:
-P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $4.809 \times 10^{-13}$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
+P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $$4.809 \times 10^{-13}$$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
 
-#T-test
+# T-test
 T-testi abil saab võrrelda, kas kahe grupi keskmised erinevad statistiliselt olulisel määral. T-testi saab R-is kätte andes funktsioonile t.test ette numbrilise tunnuse (antud juhul vanus) ja grupeeriva tunnuse (antud juhul elukoht) alljärgneval kujul:
 
 ```{r}
@@ -282,7 +283,7 @@ t.test(vanus~elukoht, data=tabel)
 ```
 
 
-##Ülesanded
+## Ülesanded
 
 1. Leia avatuse mediaanväärtus (kirjuta kood allolevale reale)
 
@@ -313,9 +314,8 @@ t.test(vanus~elukoht, data=tabel)
 ## Mõned huvitavad lingid
 Allpool on toodud mõned veebilehed, mis võivad osutuda kasulikuks, kui soovite R-i omal käel natuke lähemalt tundma õppida.
 
-* http://tryr.codeschool.com/ : l?hemat sorti interaktiivne veebikursus R-i põhitõdedest  
-* https://www.datacamp.com/courses/introduction-to-r : natuke pikem interaktiivne veebikursus.  
-* http://health.adelaide.edu.au/psychology/ccs/docs/lsr/lsr-0.4.pdf : psühholoogiatudengitele suunatud raamat statistikast ja R-ist. Raamatu esimese osa, mis käitleb teile ilmselt juba tuttavaid uurimismeetoditega seotud küimusi võib julgelt vahele jätta ja asuda kohe teise osa kallale.  
-* http://statmethods.net/ : lehekülg, kus on kategooriate kaupa ?ra toodud erinevad R-iga seotud teemad.  
+* http://tryr.codeschool.com/ - interaktiivne veebikursus R-i põhitõdedest  
+* http://health.adelaide.edu.au/psychology/ccs/docs/lsr/lsr-0.4.pdf - psühholoogiatudengitele suunatud raamat statistikast ja R-ist. 
+* http://statmethods.net/
 
 
