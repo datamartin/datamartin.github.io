@@ -1,2 +1,1 @@
-# KMKT 2017
-
+# Ülevaade ainest
