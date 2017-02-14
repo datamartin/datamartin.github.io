@@ -162,7 +162,7 @@ Samasuguse tulemuse saame ka funktsiooniga *subset*
 subset(tabel, elukoht == "maa")
 ```
 
-#Kirjeldav Statistika
+# Kirjeldav Statistika  
 Nüüd, kui teame, kuidas anda R'ile edasi ainult üks muutuja andmestikus, proovime saada selgemat ülevaadet muutujast *vanus*.  
 **Kekmise** vanuse saame andes funktsioonile *mean* argumendiks muutuja *vanus*:
 
@@ -224,7 +224,7 @@ prop.table(table(tabel$elukoht))
 ```
 
 
-#Korrelatsioon  
+# Korrelatsioon  
 Kahe muutuja vahelise korrelatsioonikordaja väätuse saame andes need muutujad argumentideks funktsioonile *cor*:
 
 
