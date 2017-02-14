@@ -7,13 +7,7 @@ output:
   html_document:
     css: style.css
     keep_md: true
-  github_document:
-    html_preview: no
-  pdf_document:
-    fig_caption: yes
-    fig_height: 3
-    fig_width: 3
-  word_document: default
+
 ---
 <script src="hideOutput.js"></script>
 ```{r global_options, include=FALSE, echo = F}
