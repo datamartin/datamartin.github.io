@@ -12,4 +12,4 @@ Kursuse eesmärgid on:
 
 [Sissejuhatav loeng R-ist](http://rpubs.com/kolnesm/KMKTloeng17)
 
-[Praktikumide materjalid](praktikumid).
+[Praktikumide materjalid](praktikumid)
