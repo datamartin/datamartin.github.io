@@ -9,7 +9,7 @@ output:
     fig_height: 3
     fig_width: 3
   html_document:
-    code_folding: hide
+    code_folding: show
     css: style.css
     keep_md: yes
   github_document:
@@ -36,7 +36,7 @@ Arvutiklassi arvutites on need programmid juba olemas, aga kui on soovi paigalda
 * programmeerimiskeel R -  http://ftp.eenet.ee/pub/cran  
 * RStudio - http://www.rstudio.com/products/rstudio/download
 
-# RStudio kasutamine   
+# 1. RStudio kasutamine   
 
 Laadige alla praktikumi koodi ja andmeid sisaldav zip-fail Moodle'ist. Pakkige zip-fail lahti. Selles on 2 faili:
 koodifail praktikum1.R ja andmefail praktikum1.RData.  
@@ -59,6 +59,7 @@ Nüüd peaks meil RStudio aknas lahti olemas 4 osa. Erinevate osade funktsioonid
 **All paremal** asub 5 erinevat paneeli:
 
 * *Files*: R-i koodi ja andmefailide avamiseks.  
+**NB!** Selles aknas saate sättida enda töökeskkonda. See annab R'ile teada, missuguse kaustaga parasjagu tööd tehakse. Kausta otsimiseks vajutage sümbolile "...", otsige üles sobiv kaust ja vajutage "OK". Seejärel vajutage nupule *More* ja valige *Set As Working Directory*. Jälgige alati, et töökekskond oleks kaust hetkel kasutatavate andmetega.   
 * *Plots*: selles osas ilmuvad nähtavale joonised.  
 * *Packages*: selle osa abil saab installida ja laadida lisamooduleid, mis lisavad R-ile täiendavat funktsionaalsust. Lisamoodulid tuleb kõigepealt installida, st öelda R-ile, see tõmbaks mooduli internetist antud arvutisse. Seda saab teha vajutades paneelil nuppu *Install* ja kirjutades avanevasse aknasse meid huvitava lisamooduli nime. Kui R on mooduli installinud, tuleb see ka laadida. Laadimiseks tuleb vajaminev moodul *Packages*-paneeli nimekirjast üles otsida ja selle nime eesasuvasse kasti linnukene teha. Lisamooduleid saab installida ja laadida ka R-i koodi abil - *library("lisamooduli nimi")*.    
 * *Help*: Abiinfo R-i funktsioonide kohta. Kirjutades paneeli otsingukasti meid huvitava R-i funktsiooni nime ja vajutades Enterit, näidatakse infot funktsiooni kasutamise kohta. Abiinfo lehe lõpus on toodud ka näited selle konkreetse funktsiooni kasutamise kohta.  
@@ -81,17 +82,16 @@ Klõpsates tabeli nime ees oleval sinisel nupul peaks avanema allolev pilt.
 
 Meile näidatakse tabelis olevate tulpade nimesid, andmetüüpe ja esimesi andmepunkte. Esimene tulp/muutuja kannab nime "vanus". Andmetüüp on *int* , mis tuleb inglisekeelsest sõnast *integer* ehk täisarv, st. tegemist on tulbaga, milles sisalduvad andmed on täisarvud. (Teine R-is levinud numbriliste andmete tüüp on *num* ehk *numeric*, mis võib sisaldada ka komakohaga arve.) Teine tulp
 kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „maa“ , „linn“. *Factor* tähendab R-i kontekstis kategooriaid sisaldavat muutujat. Antud juhul on neid kategooriaid 2 tükki: „maa“ ja „linn“. Kõik ülejäänud tabelis olevad muutujad sisaldavad sarnaselt esimese tulbaga täisarvulist tüüpi andmeid (*int*).
+  
+   
+**Ülesanded - RStudio kasutamine**  
 
-Samasuguse ülevaate saate ka siis, kui kirjutate kasutate funktsiooni *str* ja lisate argumendiks vastava andmetabeli. Antud juhul:
+1. Looge uus muutuja nimega "uus_muutuja". Andke sellele muutujale numbriline väärtus.  
+2. Korrutage see muutuja kahega. Võtge see muutuja ruutu.    
+3. Kasutage funktsiooni *head()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
+4. Kaustage funktsiooni *str()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
 
-```{r}
-load("praktikum1.RData")
-str(tabel)
-```
-
-Klõpsates hiirega andmetabeli nimel, avaneb andmetabel ka visuaalsel kujul.
-
-# Andmetega manipuleerimine
+# 2. Andmetega manipuleerimine
 
 Enne alustamist veenduge, et Teil oleks RStudio töökeskkonnas (*Global Environment*) vastav andmetabel olemas (Joonis 3.).  
 
@@ -126,13 +126,15 @@ subset(tabel, select = c(vanus, elukoht)) # kaks veergu. NB! lisasime c() - see 
 ```
 
 Kuidas eemaldada veerge?  
-Kasutage miinus märki:  
+Kasutage miinusmärki:  
 
 ```{r, eval = FALSE}
-subset(tabel, select = -c(vanus, elukoht))
+subset(tabel, select = -c(vanus, elukoht)) # eemaldab veerud vanus ja elukoht
+tabel[,1] # eemaldab esimese veeru
+tabel[-1,] # eemaldab esimese rea
 ```
 
-**Ridade eraldamine**
+**Ridade eraldamine**  
 Järjekorra numbri abil saab ridasid samamoodi eraldada nagu veerge:
 
 ```{r , eval = FALSE}
@@ -144,7 +146,8 @@ tabel[1,] #esimne rida
 tabel[1:5,] #esimesed viis rida
 ```
 
-Kuidas valida ridu, mis vastavad teatud tingimustele. Proovime näiteks võtta andmestikust need read, kus vaadeldava isiku vanus on alla 30.
+**Tingimuste kasutamine**  
+Kuidas valida ridu, mis vastavad teatud tingimustele? Proovime näiteks võtta andmestikust need read, kus vaadeldava isiku vanus on alla 30.
 Nurgeliste sulgudega:
 
 ```{r, eval = FALSE}
@@ -157,7 +160,7 @@ Funktsiooniga *subset*:
 subset(tabel, vanus < 30)
 ```
 
-Sageli on vaja võtta andmetest välja read, mis on ühe muutuja suhtes võrdesed. Näiteks püüame eraldada andmetest kõik read, kus elukoha väärtusega on "maa". Saame kasutada juba tuttavat ridade ja veergude määratlust:  
+Sageli on vaja võtta andmetest välja read, mis on ühe muutuja suhtes võrdsed. Näiteks püüame eraldada andmetest kõik read, kus elukoha väärtus on "maa". Saame kasutada juba tuttavat ridade ja veergude määratlust:  
 
 ```{r, eval = FALSE}
 tabel[tabel$elukoht == "maa",] 
@@ -168,8 +171,14 @@ Samasuguse tulemuse saame ka funktsiooniga *subset*
 ```{r, eval = FALSE}
 subset(tabel, elukoht == "maa")
 ```
+  
+   
+**Ülesanded - andmetega manipuleerimine**  
+1. Eraldage andmetest veerg "vanus". Looge uus muutuja, kus on ainult see veerg.  
+2. Tehke kaks uut andmestikku. Esimesse salvestage maal elavata katseisikute tulemused ja teise salvestage linnas elavate katseisikute tulemused.  
 
-# Kirjeldav Statistika  
+
+# 3. Kirjeldav Statistika  
 Nüüd, kui teame, kuidas anda R'ile edasi ainult üks muutuja andmestikus, proovime saada selgemat ülevaadet muutujast *vanus*.  
 **Kekmise** vanuse saame andes funktsioonile *mean* argumendiks muutuja *vanus*:
 
@@ -221,9 +230,15 @@ Protsentuaalse jaotuse saame lisades sagedustabeli ümber funktsiooni *prop.tabl
 ```{r}
 prop.table(table(tabel$elukoht))
 ```
+  
+   
+**Ülesanded - kirjeldav statistika**  
+1. Leidke sotsiaalsuse, meelekindluse, ekstravertsuse, neurootilisuse ja avatuse keskmised tulemused.  
+2. Kasutage funktsiooni *summary()*. Andke argumendiks üks veerg. Andke argumendiks terve tabel. Mida see funktsioon väljastab?  
+3. Millises vahemikus varieeruvad ekstravertsuse skoorid?
 
 
-# Korrelatsioon  
+# 4. Korrelatsioon  
 Kahe muutuja vahelise korrelatsioonikordaja väätuse saame andes need muutujad argumentideks funktsioonile *cor*:
 
 ```{r}
@@ -245,7 +260,7 @@ cor(tabel[,3:7], use="complete.obs")
 ```
 
 
-Kuna antud juhul on puuduvaid andmeid väga vähe, on kahe puuduvate andmete eemaldamise meetodi kasutamise puhul erinevused vaevum?rgatavad:
+Kuna antud juhul on puuduvaid andmeid väga vähe, on puuduvate andmete eemaldamise meetodi kasutamise puhul erinevused vaevumärgatavad:
 
 ```{r}
 cor(tabel[,3:7], use="pairwise")
@@ -267,9 +282,15 @@ cor.test(tabel$neurootilisus, tabel$stateanx)
 ```
 
 Funktsiooni väljund näeb välja selline:
-P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $$4.809 \times 10^{-13}$$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.
+P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $$4.809 \times 10^{-13}$$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.   
+   
+**Ülesanded - korrelatsioon**  
+1. Kui tugev on seisundi- ja püsiärevuse vaheline korrelatsioon?  
+2. Kui tugev on neurootlisuse ja ekstravertsuse vaheline korrelatsioon?  
+3. Kui tugev on depressiooni ja püsiärevuse vaheline korrelatsioon?  
+4. Kas need korrelatsioonikordajad on statistiliselt olulised?  
 
-# T-test
+# 5. T-test
 T-testi abil saab võrrelda, kas kahe grupi keskmised erinevad statistiliselt olulisel määral. T-testi saab R-is kätte andes funktsioonile t.test ette numbrilise tunnuse (antud juhul vanus) ja grupeeriva tunnuse (antud juhul elukoht) alljärgneval kujul:
 
 ```{r}
@@ -281,19 +302,11 @@ või sellisel kujul:
 ```{r, message=FALSE, warning=FALSE}
 t.test(vanus~elukoht, data=tabel)
 ```
+  
+   
+**Ülesanded - t-test**  
 
-
-## Ülesanded
-
-1. Leia avatuse mediaanväärtus (kirjuta kood allolevale reale)
-
-2. Leia sotsiaalsuse standardhälve
-
-3. Leia neurootilisuse keskmine
-
-4. Millises vahemikus varieeruvad ekstravertsuse skoorid?
-
-5. Kas maa- ja linnaelanike keskmised erinevad...
+1. Kas maa- ja linnaelanike keskmised erinevad...
 
 * avatuse osas?
 * ekstravertsuse osas?
@@ -301,13 +314,7 @@ t.test(vanus~elukoht, data=tabel)
 * meelekindluse osas
 * neurootilisuse osas?
 
-6. Kui tugev on seisundi- ja püsiärevuse vaheline korrelatsioon?
 
-7. Kui tugev on neurootlisuse ja ekstravertsuse vaheline korrelatsioon?
-
-8. Kui tugev on depressiooni ja püsiärevuse vaheline korrelatsioon?
-
-9. Kas need korrelatsioonikordajad on statistiliselt olulised?
 
 
 
