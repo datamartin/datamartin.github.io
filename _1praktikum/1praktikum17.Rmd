@@ -4,16 +4,16 @@ title: 'Kvantitatiivsed mudelid käitumisteadustes (SHPH.00.004). 1. praktikum: 
 author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
 date: "8 veebruar 2017"
 output:
-  pdf_document:
-    fig_caption: yes
-    fig_height: 3
-    fig_width: 3
   html_document:
     code_folding: show
     css: style.css
     keep_md: yes
   github_document:
     html_preview: no
+  pdf_document:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 3
   word_document: default
 ---
 <script src="hideOutput.js"></script>
@@ -87,7 +87,7 @@ kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „m
 **Ülesanded - RStudio kasutamine**  
 
 1. Looge uus muutuja nimega "uus_muutuja". Andke sellele muutujale numbriline väärtus.  
-2. Korrutage see muutuja kahega. Võtge see muutuja ruutu.    
+2. Korrutage see muutuja kahega. Võtke see muutuja ruutu.    
 3. Kasutage funktsiooni *head()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
 4. Kaustage funktsiooni *str()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
 

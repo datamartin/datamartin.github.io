@@ -69,7 +69,7 @@ kannab nime "elukoht"" ja selle tüübiks on märgitud *Factor* w/ 2 levels „m
 **Ülesanded - RStudio kasutamine**  
 
 1. Looge uus muutuja nimega "uus_muutuja". Andke sellele muutujale numbriline väärtus.  
-2. Korrutage see muutuja kahega. Võtge see muutuja ruutu.    
+2. Korrutage see muutuja kahega. Võtke see muutuja ruutu.    
 3. Kasutage funktsiooni *head()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
 4. Kaustage funktsiooni *str()*, argumendiks pange andmesitiku nimi. Mida see funktsioon näitab?   
 
