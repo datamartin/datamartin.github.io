@@ -13,7 +13,7 @@ Teemad: Harjutusi rakendustarkvaraga R. Kirjeldav statistika, korrelatsiooni- ja
 
 * [Praktikumi materjalid](../1praktikum)
 * [PDF versioon](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/datamartin/datamartin.github.io/master/_1praktikum/1praktikum17.pdf)
-
+* [Andmed](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/datamartin/datamartin.github.io/master/_1praktikum/1praktikum17.rar)
 
 ## Praktikum 2
 
