@@ -282,7 +282,11 @@ cor.test(tabel$neurootilisus, tabel$stateanx)
 ```
 
 Funktsiooni väljund näeb välja selline:
-P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu $4.809 \times 10^{-13}$ ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.   
+P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu 
+\begin{equation}
+4.809 \times 10^{-13}
+\end{equation}
+ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.   
    
 **Ülesanded - korrelatsioon**  
 1. Kui tugev on seisundi- ja püsiärevuse vaheline korrelatsioon?  
