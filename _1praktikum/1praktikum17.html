@@ -298,7 +298,7 @@ median(tabel$sotsiaalsus, na.rm=TRUE)</code></pre>
 <pre class="r"><code>round(cor(tabel[,3:7], use=&quot;complete.obs&quot;), 2)</code></pre>
 <p>Vahel soovime teada ka korrelatsioonikordaja statistilist olulisust. Selle saame funktsiooni cor.test abil.</p>
 <pre class="r"><code>cor.test(tabel$neurootilisus, tabel$stateanx)</code></pre>
-<p>Funktsiooni väljund näeb välja selline: P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu <span class="math display">\[4.809 \times 10^{-13}\]</span> ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.</p>
+<p>Funktsiooni väljund näeb välja selline: P-väärtus on väljundis antud kujul 4.809e-13. See tähistab arvu <span class="math inline">\(4.809 \times 10^{-13}\)</span> ehk tegemist on väga väikese arvuga ja seega võib korrelatsioonikordajat lugeda statistiliselt oluliseks. Väga väikeste või väga suurte arvude puhul kasutabki R-i sellist tähistust.</p>
 <p><strong>Ülesanded - korrelatsioon</strong><br />
 1. Kui tugev on seisundi- ja püsiärevuse vaheline korrelatsioon?<br />
 2. Kui tugev on neurootlisuse ja ekstravertsuse vaheline korrelatsioon?<br />
