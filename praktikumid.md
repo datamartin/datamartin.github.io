@@ -18,4 +18,11 @@ Teemad: Harjutusi rakendustarkvaraga R. Kirjeldav statistika, korrelatsiooni- ja
 
 ## Praktikum 2
 
-...
+03.03.2017 
+
+Teemad: Andmete lugemine R-i. Jooniste tegemine paketiga ggplot2.
+
+* [Praktikumi materjalid](../2praktikum)
+* [PDF versioon](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/datamartin/datamartin.github.io/master/_2praktikum/2Joonised.docx){:target="_blank"}
+* [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAeGhtdjI5Qzc4enc){:target="_blank"}
+
