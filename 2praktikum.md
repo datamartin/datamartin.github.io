@@ -4,4 +4,4 @@ title: KMKT prax
 ---
 Tagasi [praktikumide lehele](praktikumid)
 ---
-{% include_relative /_1praktikum/1praktikum17.md %}
+{% include_relative /_2praktikum/2praktikum17.md %}
