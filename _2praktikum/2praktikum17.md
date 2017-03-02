@@ -22,9 +22,7 @@ Eelmises praktikumis olid andmed RData-formaadis olemas. Enamasti jõuavad andme
   
 ###Töökausta määratlemine
 Alustuseks peaksime rääkima sellisest mõistest nagu R-i töökaust. Kui me RStudio käivitame, määrab R ära kausta, millest ta vaikimisi faile otsima hakkab. Kui tahame salvestada andmeid või jooniseid, siis salvestatakse ka need vaikimisi just sinna kausta. Seda kausta nimetataksegi R-i töökaustaks. Windowsi arvutis on vaikimisi töökaustaks *My Documents*. Andmefailid, mida me laadida tahame, paiknevad tõenäoliselt mõnes muus kaustas või alamkaustas. R-i töökausta muutmiseks peaksime otsima RStudio *Files*-paneeli (akna alumises parempoolses nurgas) abil üles selle kausta, milles meid huvitav andmefail paikneb. Seejärel peaksime muutma selle kausta R-i töökaustaks, vajutades *Files*-paneeli ülaosas asuvat nuppu *More* ja valides avanevast menüüst *Set As Working Directory*.   
-<div style="width:400px; height=400px">
 ![Joonis 1. Töökausta määramine](workspace.png)
-</div>
 
 ## Excel
 Andmete Excelist R-i saamiseks on mitu erinevat võimalust. Vaatame kõige tüüpilisemalt kasutatavat
@@ -288,9 +286,8 @@ ggplot(pisa, aes(x= PV1MATH, y = PV1SCIE))+
 
 
 Vaikimisi tähistavad hajuvusdiagrammil andmepunkte mustad punktid. Nende kuju saame muuta kui lisame kihile *geom_smooth* arugmendi *shape = ...*. Selle argumendi väärtus määrab nende punktide kuju:  
-<div style="width:400px; height=400px">
+
 ![Joonis 2. Argumendis shape väärtused](symbols2.png)
-</div>
 
 
 Vahel soovime hajuvusdiagrammile lisada muutujatevahelise seose tugevust ja suunda näitava regressioonisirge. Seda saab teha, kui lisada uus kiht nimega *geom_smooth()*, argumendiks anname *method = lm*:
