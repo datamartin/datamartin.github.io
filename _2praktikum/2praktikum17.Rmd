@@ -114,23 +114,32 @@ Peaks avanema aken (NB! See ei pruugi olla esiplaanil), mis võimaldab andmefail
 Eelmise praktikumi teemade koradamine. Kasutame andmestikku PISA.    
 
 1. Leia uuringus osalenute keskmine vanus?  
-```{r, eval = F}
-mean()# keskmise arvutamiseks sai kasutada funktsiooni mean()
-summary()#annab ülevaate tervest andmestikust
+```{r, eval = T}
+mean(pisa$AGE)# keskmise arvutamiseks sai kasutada funktsiooni mean()
+#summary(pisa)#annab ülevaate tervest andmestikust
 ```
 
 2. Kui palju tüdrukuid ja poisse oli uuringus? (andmetes: 1 = tüdruk, 2 = poiss)  
-```{r, eval = F}
-table()
+```{r, eval = T}
+table(pisa$Gender)
 ```
 
 3. Kui palju õpilasi oli erinevates klassides?  
+```{r}
+table(pisa$GR)
+```
 
 
 4. Milline on korrelatsioon matemaatik (PV1MATH), lugemise (PV1READ) ja loodusteaduste (PV1SCIE) alatestide tulemuste vahel?  
-```{r, eval = FALSE}
-cor()
-cor.test()
+```{r, eval = T}
+#saab teha paarikauapa:
+cor.test(pisa$PV1MATH, pisa$PV1READ)
+```
+```{r}
+#maatriksi saab kätte cor() funktsiooniga või corr.test funktsiooniga paketist psych
+cor(pisa[,c("PV1MATH", "PV1READ", "PV1SCIE")]) #annab sisendiks nimetatud veerud
+library(psych)#pakett tuleb enne installeerida
+corr.test(pisa[,c("PV1MATH", "PV1READ", "PV1SCIE")])
 ```
 
 5. Võrdle meeste ja naiste keskmisi t-testiga:  
@@ -138,11 +147,28 @@ cor.test()
 t.test(sõltuv muutuja ~ sõktumatu muutuja)
 ```
 
-        5.1. lugemine   
-        5.2. matemaatika  
-        5.3.loodusteadus   
-        
+5.1. lugemine   
+```{r}
+t.test(pisa$PV1READ ~ pisa$Gender)
+```
+
+5.2. matemaatika
+```{r}
+t.test(pisa$PV1MATH ~ pisa$Gender)
+```
+
+5.3.loodusteadus   
+```{r}
+t.test(pisa$PV1SCIE ~ pisa$Gender)
+```
+
 6. Millised olid alatestide keskmised väärtused?
+```{r}
+#keskmised väärtused saame kätte funktsiooni t.test() väljundist (mõlema grupi kohta eraldi)
+# üldise keskmise väärtuse saame funktsiooniga mean -> mean(pisa$PV1READ) 
+#Ka funktsiooniga tapply() saab arvutada keskmisi kategoriseeriva tunnuse alusel:
+tapply(pisa$PV1MATH, pisa$Gender, mean, na.rm = TRUE)
+```
 
 
 # Joonised paketiga ggplot2
@@ -219,13 +245,13 @@ tapply(sõltuv tunnus, grupeeriv tunnus, kasutatav funktsioon)
 ```
 
 ```{r}
-tapply(pisa$PV1READ, pisa$GR, mean, na.rm=TRUE)
+tapply(pisa$PV1MATH, pisa$GR, mean, na.rm=TRUE)
 ```
 
 Funktsiooniga ggplot() saame neid tulemusi suurema vaevata ka graafiliselt kujutada:  
 ```{r}
 ggplot(pisa, aes(y=PV1MATH, x = GR))+
-        geom_bar(aes(group = GR), position = "dodge", stat="identity")+
+        geom_bar(aes(group = GR), stat = "summary", fun.y = "mean") +
         labs(x ="klass" , y = "matemaatika alatesti keskmine skoor")
 ```
 
@@ -282,19 +308,69 @@ ggplot(pisa, aes(x= PV1MATH, y = PV1SCIE))+
 
 ## Ülesanded - Joonised
 1. Histogramm matemaatika alatesti tulemuste kohta (lisa joonisele pealkiri):
+```{r}
+ggplot(pisa, aes(PV1MATH))+
+        geom_histogram(col = "blue", fill = "gray")+
+        labs(title = "Mamtemaatika tulemused")
+```
 
 2. Tee karpdiagramm, mis illustreerib meeste ja naiste matemaatika alatestide skoore
+```{r}
+ggplot(pisa, aes(x = as.factor(Gender), y = PV1MATH))+ #kui joonis ei tee eraldi tulpasi, siis tuleb lisada kategoriseerivale tunnusele funtksioon as.factor()
+        geom_boxplot(fill = "grey80", colour = "#3366FF")+ #värvisin karpide sisu hallikaks ja karpide ääre siniseks
+        scale_x_discrete(labels = c("tüdrukud", "poisid"))+
+        labs(x = "sugu", y = "matemaatika tulemused")+
+        theme_classic() #lisasin juba töödeldud vormi joonisele
+```
 
 3. Matemaatika ja lugemise alatestide tulemuste seos (lisa joonisele regressioonisirge)
+```{r}
+ggplot(pisa, aes(x= PV1MATH, y = PV1READ))+
+    geom_point(shape=1) +    # shape = 1 - tühjad ringid
+    geom_smooth(method=lm, se=TRUE)    # lisab regressioonisirge, se = TRUE - lisab usalduspiire
+                  
+```
 
 4. Lugemise ja loodusteaduste alatestide tulemuste seos (lisa joonisele regressioonisirge)
+```{r}
+ggplot(pisa, aes(x= PV1READ, y = PV1SCIE))+
+        geom_point(shape=1) +    # shape = 1 - tühjad ringid
+        geom_smooth(method=lm, se=TRUE) +   # lisab regressioonisirge, se = TRUE - lisab usalduspiire
+        theme_classic() 
+```
 
 5. Tulpdiagramm erinevate klasside lugemise alatesti skooride kohta
+```{r}
+ggplot(pisa, aes(y=PV1READ, x = GR))+
+        geom_bar(aes(group = GR), stat = "summary", fun.y = "mean") +
+        labs(x ="klass" , y = "lugemise alatesti keskmine skoor")
+```
+```{r}
+#kontrollime funktsiooniga tapply() kas saime joonisele õiged tulemused:
+tapply(pisa$PV1READ, pisa$GR, mean, na.rm =TRUE)
+```
 
 6. Tee eraldi histogramm naiste ja meeste matemaatika alatesti tulemuste kohta:
 
-```{r, eval = FALSE}
-#Vihje:  
-subset(pisa, GR == 9) #ainult 9. klassi tulemuste eraldamiseks andmetest
+```{r, eval = T}
+#Selle ülesande lahendamiseks on mitu võimalust. 
+# Esiteks saate teha uued andmestikud funktsiooniga subset ja kasutada neid andmestikke jooniste koostamisel:
+pisa_tydrukud <- subset(pisa, Gender == 1)
+pisa_poisid <- subset(pisa, Gender == 2)
+
+# Teiseks saate kasutada ka joonise koostamise ajal funktsiooni subset:
+ggplot(subset(pisa, Gender == 1), aes(x=PV1MATH))+
+        geom_histogram()+
+        labs(tilte ="Tüdrukute tulemused")
+
+ggplot(subset(pisa, Gender == 2), aes(x=PV1MATH))+
+        geom_histogram()+
+        labs(tilte ="Poiste tulemused")
+
+#Kolmandaks saate kasutada ggplot'i kihti nimega facet_wrap()
+ggplot(pisa, aes(x=PV1MATH))+
+        geom_histogram()+
+        facet_wrap(~Gender)#selle kihiga saab lisada kategoriseeriva tunnuse joonisele
+        
 ```
 

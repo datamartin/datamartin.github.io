@@ -111,24 +111,96 @@ Eelmise praktikumi teemade koradamine. Kasutame andmestikku PISA.
 1. Leia uuringus osalenute keskmine vanus?  
 
 ```r
-mean()# keskmise arvutamiseks sai kasutada funktsiooni mean()
-summary()#annab ülevaate tervest andmestikust
+mean(pisa$AGE)# keskmise arvutamiseks sai kasutada funktsiooni mean()
+```
+
+```
+## [1] 15.81886
+```
+
+```r
+#summary(pisa)#annab ülevaate tervest andmestikust
 ```
 
 2. Kui palju tüdrukuid ja poisse oli uuringus? (andmetes: 1 = tüdruk, 2 = poiss)  
 
 ```r
-table()
+table(pisa$Gender)
+```
+
+```
+## 
+##   1   2 
+## 345 401
 ```
 
 3. Kui palju õpilasi oli erinevates klassides?  
+
+```r
+table(pisa$GR)
+```
+
+```
+## 
+##   7   8   9 
+##  15 202 529
+```
 
 
 4. Milline on korrelatsioon matemaatik (PV1MATH), lugemise (PV1READ) ja loodusteaduste (PV1SCIE) alatestide tulemuste vahel?  
 
 ```r
-cor()
-cor.test()
+#saab teha paarikauapa:
+cor.test(pisa$PV1MATH, pisa$PV1READ)
+```
+
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  pisa$PV1MATH and pisa$PV1READ
+## t = 33.213, df = 744, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7421848 0.8001879
+## sample estimates:
+##       cor 
+## 0.7727951
+```
+
+```r
+#maatriksi saab kätte cor() funktsiooniga või corr.test funktsiooniga paketist psych
+cor(pisa[,c("PV1MATH", "PV1READ", "PV1SCIE")]) #annab sisendiks nimetatud veerud
+```
+
+```
+##           PV1MATH   PV1READ   PV1SCIE
+## PV1MATH 1.0000000 0.7727951 0.8265235
+## PV1READ 0.7727951 1.0000000 0.8437376
+## PV1SCIE 0.8265235 0.8437376 1.0000000
+```
+
+```r
+library(psych)#pakett tuleb enne installeerida
+corr.test(pisa[,c("PV1MATH", "PV1READ", "PV1SCIE")])
+```
+
+```
+## Call:corr.test(x = pisa[, c("PV1MATH", "PV1READ", "PV1SCIE")])
+## Correlation matrix 
+##         PV1MATH PV1READ PV1SCIE
+## PV1MATH    1.00    0.77    0.83
+## PV1READ    0.77    1.00    0.84
+## PV1SCIE    0.83    0.84    1.00
+## Sample Size 
+## [1] 746
+## Probability values (Entries above the diagonal are adjusted for multiple tests.) 
+##         PV1MATH PV1READ PV1SCIE
+## PV1MATH       0       0       0
+## PV1READ       0       0       0
+## PV1SCIE       0       0       0
+## 
+##  To see confidence intervals of the correlations, print with the short=FALSE option
 ```
 
 5. Võrdle meeste ja naiste keskmisi t-testiga:  
@@ -137,11 +209,79 @@ cor.test()
 t.test(sõltuv muutuja ~ sõktumatu muutuja)
 ```
 
-        5.1. lugemine   
-        5.2. matemaatika  
-        5.3.loodusteadus   
-        
+5.1. lugemine   
+
+```r
+t.test(pisa$PV1READ ~ pisa$Gender)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  pisa$PV1READ by pisa$Gender
+## t = 7.251, df = 735.99, p-value = 1.049e-12
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  29.83468 51.98782
+## sample estimates:
+## mean in group 1 mean in group 2 
+##        513.5414        472.6302
+```
+
+5.2. matemaatika
+
+```r
+t.test(pisa$PV1MATH ~ pisa$Gender)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  pisa$PV1MATH by pisa$Gender
+## t = -2.4794, df = 726.74, p-value = 0.01339
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -25.273729  -2.936305
+## sample estimates:
+## mean in group 1 mean in group 2 
+##        498.0201        512.1252
+```
+
+5.3.loodusteadus   
+
+```r
+t.test(pisa$PV1SCIE ~ pisa$Gender)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  pisa$PV1SCIE by pisa$Gender
+## t = -0.37242, df = 728.92, p-value = 0.7097
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -13.866146   9.444211
+## sample estimates:
+## mean in group 1 mean in group 2 
+##        525.7908        528.0017
+```
+
 6. Millised olid alatestide keskmised väärtused?
+
+```r
+#keskmised väärtused saame kätte funktsiooni t.test() väljundist (mõlema grupi kohta eraldi)
+# üldise keskmise väärtuse saame funktsiooniga mean -> mean(pisa$PV1READ) 
+#Ka funktsiooniga tapply() saab arvutada keskmisi kategoriseeriva tunnuse alusel:
+tapply(pisa$PV1MATH, pisa$Gender, mean, na.rm = TRUE)
+```
+
+```
+##        1        2 
+## 498.0201 512.1252
+```
 
 
 # Joonised paketiga ggplot2
@@ -176,7 +316,7 @@ ggplot(pisa, aes(x=PV1READ))+
         geom_histogram()
 ```
 
-![](Figs/unnamed-chunk-16-1.png)<!-- -->
+![](Figs/unnamed-chunk-22-1.png)<!-- -->
 
 Histogrammi välimuse muutmiseks saab funktsioonile lisada erinevaid argumente. Sagedamini kasutatavad
 neist on:  
@@ -199,7 +339,7 @@ ggplot(pisa, aes(x=PV1READ))+
         labs(title = "Lugemise alatesti skooride jaotus", x ="Alatesti skoor" , y = "Sagedus")
 ```
 
-![](Figs/unnamed-chunk-17-1.png)<!-- -->
+![](Figs/unnamed-chunk-23-1.png)<!-- -->
 
 Koodilugemise lihtsuse huvides on ülalolevas koodijupis argumendid paigutatud eraldi ridadele, aga samahästi võib kõik argumendid ka ühele reale kirjutada. (Mitmerealise koodijupi konsoolile saatmiseks tuli read hiirega siniseks teha ja seejärel vajutada Run-nuppu või Ctrl+Enter klahvikombinatisooni) Joonist saab suuremal kujul vaadata vajutades RStudio Plots-paneelil nuppu Zoom ning pildifailina salvestada vajutades kõrvalasuvat nuppu Export ja valides avanevast menüüst Save as Image.  
 
@@ -216,7 +356,7 @@ ggplot(pisa, aes(GR))+
         theme_bw()
 ```
 
-![](Figs/unnamed-chunk-18-1.png)<!-- -->
+![](Figs/unnamed-chunk-24-1.png)<!-- -->
 
 
 
@@ -230,23 +370,23 @@ tapply(sõltuv tunnus, grupeeriv tunnus, kasutatav funktsioon)
 
 
 ```r
-tapply(pisa$PV1READ, pisa$GR, mean, na.rm=TRUE)
+tapply(pisa$PV1MATH, pisa$GR, mean, na.rm=TRUE)
 ```
 
 ```
 ##        7        8        9 
-## 350.5693 466.1382 505.2515
+## 359.4100 485.1533 517.5558
 ```
 
 Funktsiooniga ggplot() saame neid tulemusi suurema vaevata ka graafiliselt kujutada:  
 
 ```r
 ggplot(pisa, aes(y=PV1MATH, x = GR))+
-        geom_bar(aes(group = GR), position = "dodge", stat="identity")+
+        geom_bar(aes(group = GR), stat = "summary", fun.y = "mean") +
         labs(x ="klass" , y = "matemaatika alatesti keskmine skoor")
 ```
 
-![](Figs/unnamed-chunk-21-1.png)<!-- -->
+![](Figs/unnamed-chunk-27-1.png)<!-- -->
 
 
 ##Karpdiagramm (*boxplot*)
@@ -260,7 +400,7 @@ ggplot(pisa, aes(y = PV1MATH, x = as.factor(GR)))+
         labs(x = "klass", y = "matemaatika alatesti skoor")
 ```
 
-![](Figs/unnamed-chunk-22-1.png)<!-- -->
+![](Figs/unnamed-chunk-28-1.png)<!-- -->
 
 
 
@@ -281,7 +421,7 @@ ggplot(pisa, aes(x= PV1MATH, y = PV1SCIE))+
         geom_point()
 ```
 
-![](Figs/unnamed-chunk-23-1.png)<!-- -->
+![](Figs/unnamed-chunk-29-1.png)<!-- -->
 
 
 
@@ -299,7 +439,7 @@ ggplot(pisa, aes(x= PV1MATH, y = PV1SCIE))+
                 se=FALSE)    # SE = FALSE - ei lisa usalduspiire
 ```
 
-![](Figs/unnamed-chunk-24-1.png)<!-- -->
+![](Figs/unnamed-chunk-30-1.png)<!-- -->
 
 
 
@@ -308,19 +448,98 @@ ggplot(pisa, aes(x= PV1MATH, y = PV1SCIE))+
 ## Ülesanded - Joonised
 1. Histogramm matemaatika alatesti tulemuste kohta (lisa joonisele pealkiri):
 
+```r
+ggplot(pisa, aes(PV1MATH))+
+        geom_histogram(col = "blue", fill = "gray")+
+        labs(title = "Mamtemaatika tulemused")
+```
+
+![](Figs/unnamed-chunk-31-1.png)<!-- -->
+
 2. Tee karpdiagramm, mis illustreerib meeste ja naiste matemaatika alatestide skoore
+
+```r
+ggplot(pisa, aes(x = as.factor(Gender), y = PV1MATH))+ #kui joonis ei tee eraldi tulpasi, siis tuleb lisada kategoriseerivale tunnusele funtksioon as.factor()
+        geom_boxplot(fill = "grey80", colour = "#3366FF")+ #värvisin karpide sisu hallikaks ja karpide ääre siniseks
+        scale_x_discrete(labels = c("tüdrukud", "poisid"))+
+        labs(x = "sugu", y = "matemaatika tulemused")+
+        theme_classic() #lisasin juba töödeldud vormi joonisele
+```
+
+![](Figs/unnamed-chunk-32-1.png)<!-- -->
 
 3. Matemaatika ja lugemise alatestide tulemuste seos (lisa joonisele regressioonisirge)
 
+```r
+ggplot(pisa, aes(x= PV1MATH, y = PV1READ))+
+    geom_point(shape=1) +    # shape = 1 - tühjad ringid
+    geom_smooth(method=lm, se=TRUE)    # lisab regressioonisirge, se = TRUE - lisab usalduspiire
+```
+
+![](Figs/unnamed-chunk-33-1.png)<!-- -->
+
 4. Lugemise ja loodusteaduste alatestide tulemuste seos (lisa joonisele regressioonisirge)
 
+```r
+ggplot(pisa, aes(x= PV1READ, y = PV1SCIE))+
+        geom_point(shape=1) +    # shape = 1 - tühjad ringid
+        geom_smooth(method=lm, se=TRUE) +   # lisab regressioonisirge, se = TRUE - lisab usalduspiire
+        theme_classic() 
+```
+
+![](Figs/unnamed-chunk-34-1.png)<!-- -->
+
 5. Tulpdiagramm erinevate klasside lugemise alatesti skooride kohta
+
+```r
+ggplot(pisa, aes(y=PV1READ, x = GR))+
+        geom_bar(aes(group = GR), stat = "summary", fun.y = "mean") +
+        labs(x ="klass" , y = "lugemise alatesti keskmine skoor")
+```
+
+![](Figs/unnamed-chunk-35-1.png)<!-- -->
+
+```r
+#kontrollime funktsiooniga tapply() kas saime joonisele õiged tulemused:
+tapply(pisa$PV1READ, pisa$GR, mean, na.rm =TRUE)
+```
+
+```
+##        7        8        9 
+## 350.5693 466.1382 505.2515
+```
 
 6. Tee eraldi histogramm naiste ja meeste matemaatika alatesti tulemuste kohta:
 
 
 ```r
-#Vihje:  
-subset(pisa, GR == 9) #ainult 9. klassi tulemuste eraldamiseks andmetest
+#Selle ülesande lahendamiseks on mitu võimalust. 
+# Esiteks saate teha uued andmestikud funktsiooniga subset ja kasutada neid andmestikke jooniste koostamisel:
+pisa_tydrukud <- subset(pisa, Gender == 1)
+pisa_poisid <- subset(pisa, Gender == 2)
+
+# Teiseks saate kasutada ka joonise koostamise ajal funktsiooni subset:
+ggplot(subset(pisa, Gender == 1), aes(x=PV1MATH))+
+        geom_histogram()+
+        labs(tilte ="Tüdrukute tulemused")
 ```
+
+![](Figs/unnamed-chunk-37-1.png)<!-- -->
+
+```r
+ggplot(subset(pisa, Gender == 2), aes(x=PV1MATH))+
+        geom_histogram()+
+        labs(tilte ="Poiste tulemused")
+```
+
+![](Figs/unnamed-chunk-37-2.png)<!-- -->
+
+```r
+#Kolmandaks saate kasutada ggplot'i kihti nimega facet_wrap()
+ggplot(pisa, aes(x=PV1MATH))+
+        geom_histogram()+
+        facet_wrap(~Gender)#selle kihiga saab lisada kategoriseeriva tunnuse joonisele
+```
+
+![](Figs/unnamed-chunk-37-3.png)<!-- -->
 
