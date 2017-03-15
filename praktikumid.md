@@ -25,3 +25,11 @@ Teemad: Andmete lugemine R-i. Jooniste tegemine paketiga ggplot2.
 * [Praktikumi materjalid](../2praktikum)
 * [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAeGhtdjI5Qzc4enc){:target="_blank"}
 
+## Praktikum 3
+
+17.03.2017 
+
+Teemad: Lineaarne regressioonanalüüs.
+
+* [Praktikumi materjalid](../3praktikum)
+* [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAUXNFWm5nYlFXeUE){:target="_blank"}
