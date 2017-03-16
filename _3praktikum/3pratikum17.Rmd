@@ -4,9 +4,9 @@ title: 'Kvantitatiivsed mudelid käitumisteadustes (SHPH.00.004). 2. praktikum: 
 author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
 date: "12 märts 2017"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 # Praktikumi eesmärgid
@@ -103,7 +103,7 @@ Mudeli väljundist teada saadud parameetrite abil võime loodusteaduste alatesti
 $$loodusteaduste alatesti skoor = 530.272 + 31.376 * teaduse oluliseks pidamine$$
   
 ## Ülesanded - paarisregressioon  
-1. Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) lugemise skoori kaudu (PVREAD). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest lugemise testi skoor ära seletab? Mitme punkti võrra muutub matemaatika skoor kui lugemise skoor muutub ühe punkti võrra? 
+1. Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) teaduse tähtsaks pidamise kaudu (GENSCIE). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest lugemise testi skoor ära seletab? Mitme punkti võrra muutub matemaatika skoor kui lugemise skoor muutub ühe punkti võrra? 
   
 # Mitmene regressioon  
 Teeme uue regressioonimudeli, milles jääb sõltumatu muutujana alles loodusteaduste alatesti skoor (PVSCIE) ja prediktorina teaduse oluliseks pidamine (GENSCIE). Lisame veel kaks uut prediktorit: huvi teaduse vastu (INTSCIE) ja motivatsioon loodusteaduste õppimiseks (INSTSCIE).

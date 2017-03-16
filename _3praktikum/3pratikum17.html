@@ -199,7 +199,7 @@ Y ja X tähistavad selles vastavalt inimeste sõltuva ja sõltumatu tunnuse vä�
 <div id="ulesanded---paarisregressioon" class="section level2">
 <h2>Ülesanded - paarisregressioon</h2>
 <ol style="list-style-type: decimal">
-<li>Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) lugemise skoori kaudu (PVREAD). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest lugemise testi skoor ära seletab? Mitme punkti võrra muutub matemaatika skoor kui lugemise skoor muutub ühe punkti võrra?</li>
+<li>Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) teaduse tähtsaks pidamise kaudu (GENSCIE). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest lugemise testi skoor ära seletab? Mitme punkti võrra muutub matemaatika skoor kui lugemise skoor muutub ühe punkti võrra?</li>
 </ol>
 </div>
 </div>
@@ -393,7 +393,7 @@ qqline(mud2.standardized.residuals, col=&quot;red&quot;, lwd=2)</code></pre>
 <p>Veel üks jääke puudutav mudeli üldistamise eeldus on jääkide sõltumatus, mis tähendab, et ei tohi esineda liiga palju üksteisega sarnanevaid jääke. Seda eeldust saab kontrollida <strong>Durbin-Watsoni testi</strong> abil, mille saame lisamoodulis <em>car</em> paikneva funtsiooni <em>dwt</em> abil, millele anname ette mudeli-objekti. (Kuna eelnevalt selle mooduli installisime ja laadisime pole seda praegu enam vaja teha.)</p>
 <pre class="r"><code>dwt(pisa.mudel2)</code></pre>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
-##    1      0.04833149      1.902115       0
+##    1      0.04833149      1.902115   0.004
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p>Vaatame väljundis numbrit, mille kohale on kirjutatud <strong>D-W Statistic</strong>. Selle soovitav väärtus on vahemikus 1 kuni 3, mida lähemal 2-le, seda parem. Antud juhul statistiku väärtuseks 1.9, mille põhjal võime järeldada, et meil pole jääkide sõltumatusega probleeme.</p>
 </div>
