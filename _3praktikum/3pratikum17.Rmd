@@ -103,7 +103,7 @@ Mudeli väljundist teada saadud parameetrite abil võime loodusteaduste alatesti
 $$loodusteaduste alatesti skoor = 530.272 + 31.376 * teaduse oluliseks pidamine$$
   
 ## Ülesanded - paarisregressioon  
-1. Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) teaduse tähtsaks pidamise kaudu (GENSCIE). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest lugemise testi skoor ära seletab? Mitme punkti võrra muutub matemaatika skoor kui lugemise skoor muutub ühe punkti võrra? 
+1. Tehke paarisregressiooni mudel, mis ennustab matemaatika alatesti skoori (tunnus PVMATH) teaduse tähtsaks pidamise kaudu (GENSCIE). Kas seos on oluline? Kui suure osa matemaatika testi skooride hajuvusest mudel ära seletab? Mitme punkti võrra muutub matemaatika skoor kui sõltumatu muutuja muutub ühe punkti võrra? 
   
 # Mitmene regressioon  
 Teeme uue regressioonimudeli, milles jääb sõltumatu muutujana alles loodusteaduste alatesti skoor (PVSCIE) ja prediktorina teaduse oluliseks pidamine (GENSCIE). Lisame veel kaks uut prediktorit: huvi teaduse vastu (INTSCIE) ja motivatsioon loodusteaduste õppimiseks (INSTSCIE).
@@ -189,7 +189,7 @@ Mitte-hierarhiliste mudelite puhul seda teha ei saa. Nt me ei saa niimoodi võrr
 anova(pisa.mudel1, pisa.mudel2)
 ```
 
-Eelkõige peaksime vaatama väljundis oleva tabeli viimase rea kahte parempoolset tulpa, milles on ära toodud mudelite erinevuse **F-suhe** ja selle **p-väärtus**. P-väärtus on praegusel juhul 2.791e-13 ehk 2.79 * 10-13 ehk p < 0.001. Seega on tõenäosus, et nii suur F-suhte väärtus on saadud ainult tänu juhusele alla 0.1\%-i ja võime tõdeda, et teine mudel on esimesest oluliselt parem. Kuigi ilmselt suuresti tänu meie väga suurele valimile, mille puhul ka üsnagi väikesed erinevused on statistiliselt olulised.
+Eelkõige peaksime vaatama väljundis oleva tabeli viimase rea kahte parempoolset tulpa, milles on ära toodud mudelite erinevuse **F-suhe** ja selle **p-väärtus**. P-väärtus on praegusel juhul 2.791e-13 ehk 2.79 * $10^{-13}$ ehk p < 0.001. Seega on tõenäosus, et nii suur F-suhte väärtus on saadud ainult tänu juhusele alla 0.1\%-i ja võime tõdeda, et teine mudel on esimesest oluliselt parem. Kuigi ilmselt suuresti tänu meie väga suurele valimile, mille puhul ka üsnagi väikesed erinevused on statistiliselt olulised.
 
 
 
@@ -229,7 +229,7 @@ pisa[abs(mud2.standardized.residuals) > 3, ]
 
 Antud juhul on tegemist meile üsna võõra andmestikuga ja me ei oska täpselt öelda, mis erindite põhjuseks võib olla. Kui me aga juhtume töötama andmetega, mida lähemalt tunneme, oskame paremini hinnata, kas nende puhul on midagi kahtlast, mis on kaasa toonud selle, et need juhtumid mudeliga hästi ei sobi.
 Samas ei tohiks suurte jääkidega vaatlusi väga kergekäeliselt välja visata, vaid ainult siis, kui tegemist on ilmselgelt kahtlaste asjaoludega (nt näpuviga andmete sisestamisel).
-Praegu on meil tegemist suure valimiga ning erindid väljenduvad peamiselt selles, et mudel nende kirjeldamiseks hästi ei sobi. Väiksemate valimite puhul võib ette tulla vastupidine olukord: üks teistest selgelt eristuv väärtus hakkab kallutama mudelit enda suunas. Kuna sellised vaatlused on väga mõjukad ja kallutanud mudeli endale vastavamaks, ei pruugi nende jääk olla üldsegi suur. Samas ei pruugi mudel andmetega hästi sobida, sest ülejäänud omavahel sarnasemate vaatluste jäägid on selle tõttu omakorda suurenenud. Selliste mõjukate juhtumite avastamiseks saab kasutada näitajaid, mida nimetatakse **Cooki kaugusteks** ning mille puhul annavad ühest suuremad väärtused põhjust kõrgendatud tähelepanuks. Need näitajad saame arvutada funktsiooni cooks.distance abil, millele anname ette mudeli. Kasutame seda praegu koos funktsiooniga max, et leida, kui suur on meie mudeli puhul kõige suurem Cooki kaugus.
+Praegu on meil tegemist suure valimiga ning erindid väljenduvad peamiselt selles, et mudel nende kirjeldamiseks hästi ei sobi. Väiksemate valimite puhul võib ette tulla vastupidine olukord: üks teistest selgelt eristuv väärtus hakkab kallutama mudelit enda suunas. Kuna sellised vaatlused on väga mõjukad ja kallutanud mudeli endale vastavamaks, ei pruugi nende jääk olla üldsegi suur. Samas ei pruugi mudel andmetega hästi sobida, sest ülejäänud omavahel sarnasemate vaatluste jäägid on selle tõttu omakorda suurenenud. Selliste mõjukate juhtumite avastamiseks saab kasutada näitajaid, mida nimetatakse **Cooki kaugusteks** ning mille puhul annavad **ühest suuremad väärtused** põhjust kõrgendatud tähelepanuks. Need näitajad saame arvutada funktsiooni *cooks.distance* abil, millele anname ette mudeli. Kasutame seda praegu koos funktsiooniga *max*, et leida, kui suur on meie mudeli puhul kõige suurem Cooki kaugus.
   
 ```{r}
 max(cooks.distance(pisa.mudel2))
@@ -263,7 +263,7 @@ See koodijupp oli ainult näitlikustamiseks, kuna meil praegu suuri kaugusi ei e
 Enamasti tahame oma analüüsi tulemusi üldistada $-$ teha järeldusi mitte ainult oma valimi, vaid mingite suuremate inimrühmade või muu taolise kohta. Selleks peab olema täidetud rida eeldusi. Ka eelduste täitmisel võib juhtuda, et kui mudelit korrata suurema valimiga, saame teistsuguse tulemuse, aga vähemalt suurendab see sarnase tulemuse tõenäosust. Kui eeldusi rikutakse, pole mudeli üldistamine korrektne, küll saame jätkuvalt öelda, et tulemused kehtivad valimi kohta, mille põhjal me mudeli koostasime. 
 
 ## Multikollineaarsus  
-Üheks probleemiks, mis esineda võib, on multikollineaarsus ehk olukord, kui mudeli prediktorid on omavahel liiga tugevalt korreleeritud. Multikollineaarsuse esinemine suurendab regressioonikordajate standardvigasid, mis tähendab, et need on vähem usaldusväärsed ja seetõttu on tõenäosus saada samasuguseid kordajaid teistes valimites väiksem. Probleemse multikollineaarsuse avastamiseks võime vaadata prediktorite-vahelisi korrelatsioone. Need saame andes funktsioonile cor meid huvitavad tabeli tulbad.
+Üheks probleemiks, mis esineda võib, on multikollineaarsus ehk olukord, kui mudeli prediktorid on omavahel liiga tugevalt korreleeritud. Multikollineaarsuse esinemine suurendab regressioonikordajate standardvigasid, mis tähendab, et need on vähem usaldusväärsed ja seetõttu on tõenäosus saada samasuguseid kordajaid teistes valimites väiksem. Probleemse multikollineaarsuse avastamiseks võime vaadata prediktorite-vahelisi korrelatsioone. Need saame andes funktsioonile *cor* meid huvitavad tabeli tulbad.
 
 ```{r}
 cor(pisa[,c("GENSCIE", "INTSCIE", "INSTSCIE")])
@@ -274,7 +274,7 @@ Saame tagasi korrelatsioonimaatriksi. Problemaatilised on muutujatevahelised kor
 Praegu on tugevaim korrelatsioon umbes 0.4 (INTSCIE ja INSTSCIE vahel).
 Veel üks näitaja, mis aitab multikollineaarsust avastada on muutujate variatsiooniindeksid, mille abil saame funktsiooni *vif* abil, andes sellele ette mudeli nime. See tuleb lisamoodulist *car*, mille peame eelnevalt installima.
 
-```{r, eval = F}
+```{r, eval = F, message=F, warning=F}
 install.packages("car")
 ```
 
@@ -312,7 +312,7 @@ qqline(mud2.standardized.residuals, col="red", lwd=2)
 ```
 
 
-Sirge joon esindab normaaljaotust ja punktid jääke. Täiusliku normaaljaotuse korral oleksid kõik punktid joone peal. Kõrvalekalded joonest on tavalised otstes, kuid keskel ei tohiks tohiks neid esineda. Praegu me midagi sellist näemegi { otstes on väikesed kõrvalekalded, aga mitte midagi hullu silma ei hakka.  
+Sirge joon esindab normaaljaotust ja punktid jääke. Täiusliku normaaljaotuse korral oleksid kõik punktid joone peal. Kõrvalekalded joonest on tavalised otstes, kuid keskel ei tohiks tohiks neid esineda. Praegu me midagi sellist näemegi; otstes on väikesed kõrvalekalded, aga mitte midagi hullu silma ei hakka.  
 
 ## Jääkide sõltumatus 
 Veel üks jääke puudutav mudeli üldistamise eeldus on jääkide sõltumatus, mis tähendab, et ei tohi esineda liiga palju üksteisega sarnanevaid jääke. Seda eeldust saab kontrollida **Durbin-Watsoni testi** abil, mille saame lisamoodulis *car* paikneva funtsiooni *dwt* abil, millele anname ette mudeli-objekti. (Kuna eelnevalt selle mooduli installisime ja laadisime pole seda praegu enam vaja teha.)
