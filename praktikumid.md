@@ -33,3 +33,12 @@ Teemad: Lineaarne regressioonanalüüs.
 
 * [Praktikumi materjalid](../3praktikum)
 * [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAUXNFWm5nYlFXeUE){:target="_blank"}
+
+## Praktikum 4
+
+31.03.2017 
+
+Teemad: Logistiline regressioonanalüüs.
+
+* [Praktikumi materjalid](../4praktikum)
+* [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAWUViUVdqY3Y0cjQ){:target="_blank"}
