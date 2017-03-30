@@ -1,6 +1,6 @@
 ---
-title: 'Kvantitatiivsed mudelid käitumisteadustes (SHPH.00.004). 4. praktikum:
-  Logistiline regressioon'
+title: 'Kvantitatiivsed mudelid kätumisteadustes (SHPH.00.004). 4. praktikum: Logistiline
+  regressioon'
 author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
 date: "29 märts 2017"
 output:
@@ -195,12 +195,13 @@ NagelkerkeR2(cowles.mudel2)
 
 See on jäänud enam-vähem samaks, nii et soo lisamine mudeli kirjeldusvõimet väga palju paremaks ei teinud. 
 
+
+## LISA. Vastuse tõnäosus prediktori konkreetse väärtuse korral  
 Vaatame lõpetuseks veel mudeli-järgsete tõenäosuste arvutamist *expit* funktsiooni abil. Selleks pidime kõigepealt saama kätte mudeli parameetrite väärtused.
 ```{r}
 coef(cowles.mudel2)
 ```
 
-## LISA. Vastuse tõnäosus prediktori konkreetse väärtuse korral  
 Arvutame jaatava vastuse tõenäosuse kui vastaja ekstravertsus on 2 standardhälvet üle keskmise ja sooks naine. Kuna female oli antud mudelis baaskategooriaks, siis jääb soo regressioonikordaja arvutusest välja.
 ```{r}
 expit(-0.2176518 + 2 * 0.2549416)
