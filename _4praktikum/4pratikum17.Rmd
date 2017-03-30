@@ -119,8 +119,10 @@ NagelkerkeR2(cowles.mudel1)
 ```
 
 
-**Pseudo-determinatsioonikordaja** väärtused ongi tüüpiliselt üsna madalad. Kordajat kasutatakse tüüpiliselt selleks, et hinnata, kas prediktorite lisamine tegi mudelit paremaks.
-Kui meil on ühe numbrilise prediktoriga logistiline mudel (nagu praegu), siis saab vastavat seost kujutada tingimusliku tihedusfunktsiooni graaku abil. Selle saame funktsiooni *cdplot* kaudu.
+**Pseudo-determinatsioonikordaja** väärtused ongi tüüpiliselt üsna madalad. Kordajat kasutatakse tüüpiliselt selleks, et hinnata, kas prediktorite lisamine tegi mudelit paremaks.  
+
+##Tingimuslik tihedusfunktsiooni joonis (conditional density plot)  
+Kui meil on ühe numbrilise prediktoriga logistiline mudel (nagu praegu), siis saab vastavat seost kujutada tingimusliku tihedusfunktsiooni joonise abil. Selle saame funktsiooni *cdplot* kaudu.
 
 ```{r}
 cdplot(volunteer ~ extraversion, data=cowles)
