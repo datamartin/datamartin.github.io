@@ -130,7 +130,7 @@ $(document).ready(function () {
 </li>
 <li>Binaarne logistiline regressioon - funktsiooniga <em>glm()</em><br />
 </li>
-<li>Multinominaalne logistiline regressioon - funktsiooniga <em>mlogit()</em></li>
+<li>Multinomiaalne logistiline regressioon - funktsiooniga <em>mlogit()</em></li>
 </ul>
 </div>
 <div id="kordamine" class="section level1">
@@ -230,8 +230,9 @@ $(document).ready(function () {
 <p>Lineaarse regressiooni puhul saime välja arvutada mudeli determinatsioonikordaja(<span class="math inline">\(R^2\)</span>), mis näitas kui suure osa sõltuva tunnuse hajuvusest mudel ära kirjeldas. Logistilise regressiooni puhul saame arvutada näitajaid, mida nimetatakse pseudo-determinatsioonikordajaks. Nad varieeruvad 0-st 1-ni nagu päris determinatsioonikordaja ning näitavad mudeli sobitustusastme headust, mida suurem väärtus seda parem. Aga nagu eesliitest pseudo järeldada võib, pole need päris samasugused. Nimelt ei saa neid tõlgendada sõltuva tunnuse seletusprotsendi mõttes nii nagu lineaarse regressiooni determinatsioonikordajat. Sõltuvalt arvutuskäigust on pseudo-determinatsioonikordajaid mitut tüüpi. Arvutame praegusel juhul ühe sagedamini kasutatava, mida nimetatakse Nagelkerke <span class="math inline">\(R^2\)</span>. Selle jaoks peame kõigepealt installima lisamooduli <em>fmsb</em>.</p>
 <pre class="r"><code>install.packages(&quot;fmsb&quot;)</code></pre>
 <p>Seejärel saame lisamooduli laadida ja kasutada selles olevat funktsiooni <em>NagelkerkeR2</em>, millele annamemudeli nime.</p>
-<pre class="r"><code>library(fmsb)
-NagelkerkeR2(cowles.mudel1)</code></pre>
+<pre class="r"><code>library(fmsb)</code></pre>
+<pre><code>## Warning: package 'fmsb' was built under R version 3.3.3</code></pre>
+<pre class="r"><code>NagelkerkeR2(cowles.mudel1)</code></pre>
 <pre><code>## $N
 ## [1] 1421
 ## 

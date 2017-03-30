@@ -1,19 +1,19 @@
 ---
-title: 'Kvantitatiivsed mudelid kĆ¤itumisteadustes (SHPH.00.004). 4. praktikum: Logistiline
-  regressioon'
-author: "Martin Kolnes, Dmitri Rozgonjuk, Karin TĆ¤ht"
-date: "29 mĆ¤rts 2017"
+title: 'Kvantitatiivsed mudelid käitumisteadustes (SHPH.00.004). 4. praktikum:
+  Logistiline regressioon'
+author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
+date: "29 märts 2017"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 # Praktikumi eesmärgid
 
 * Eelnevate teemade kordamine: lineaarne regressioon, regressioonanalüüsi eeldused    
 * Binaarne logistiline regressioon - funktsiooniga *glm()*    
-* Multinominaalne logistiline regressioon - funktsiooniga *mlogit()*   
+* Multinomiaalne logistiline regressioon - funktsiooniga *mlogit()*   
 
 # Kordamine
 
