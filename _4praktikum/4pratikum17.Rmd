@@ -251,15 +251,59 @@ Keskerakonna regressioonikordaja riskisuhte alusel võime järeldada, et lisandu
 1. Andmetabelist nimega neeme on Marko Neeme magistritöö (Neeme, 2012) andmed, milles uuriti 50-70-aastaste meeste suhtumist eesnäärmevähi skriiningtesti. Tunnus ""valmidus", näitab testis osalemise valmidust (tasemed pigem jah, ja pigem ei). Lisaks on tabelis ära toodud Suure Viisiku isiksuseomadused: neurootilisus (tunnus N), ekstravertsus (E), avatus kogemusele (O), sotsiaalsus (A) ja meelekindlus (C). Koostage binaarse logistilise regressiooni mudel, mis ennustab skriiningtestis osalemise valmidust Suure Viisiku isiksuseomaduste kaudu.   
 
 a. Esialgu tuleks saada ülevaade andmetest. Kasutage funktsiooni *summary*, argumendiks saab sisestada terve andmestiku või lihtsalt ühe veeru. Milline on oslejate keskmine vanus? Missugune on valmiduse tulemuste jaotus?  
+```{r}
+summary(neeme)
+prop.table(table(neeme$valmidus))*100#jaotus protsentides
+```
+
 b. Tehke ühe tunnuse tulemustest histogramm (vt. praktikum 2).  
+```{r}
+library(ggplot2)
+ggplot(neeme, aes(E))+
+        geom_histogram()+
+        theme_classic()+
+        labs(x = "Ekstravertsus", y = "Kogus")
+```
+
 c.  Millised isiksusomadused omavad olulist seost valmidusega? Kas need omadused suurendavad või vähendavad testis osalemise valmidust?  
+```{r}
+mudel.yl2 <- glm(valmidus~N+E+O+A+C, data = neeme, family = binomial())
+summary(mudel.yl2)
+```
+
 d.  Arvutage välja riskisuhted ja nende 95\%-usaldusvahemikud? Milline omadus mõjutab osalemisvalmidust kõige tugevamini?  
+```{r}
+round(exp(coef(mudel.yl2)),3)
+round(exp(confint(mudel.yl2)),3)
+```
+
 e.  Arvutage mudeli sobitusastet näitav hii-ruut-statistik ja selle p-väärtus.  
+```{r}
+#Siin võis tekkid osadel probleem hii-ruudu arvutamisega. 
+# Kui kustutate andmetest puuduvad andmed, siis peaks nende kahe mudeli võrdlus töötama:
+neeme2 <- na.omit(neeme)#see rida loob uue andmestiku, kus ei ole NA'sid
+#Nüüd teen mõlemad mudedlid selle uue andmestikuga:
+mudel.yl2 <- glm(valmidus~N+E+O+A+C, data = neeme2, family = binomial())
+mudel.yl2.null <- glm(valmidus~1, data = neeme2, family = binomial())
+anova(mudel.yl2, mudel.yl2.null, test = "Chisq")
+```
+
 f.  Leidke mudeli pseudo-determinatsioonikordja.  
+```{r}
+NagelkerkeR2(mudel.yl2)
+```
 
 
 2. Tabelis ESS on lisaks tunnustele partei ja vanus veel tunnused *sugu* ja *aastaid_koolis* (vastaja kooliskäidud aastate arv). Koostage uus multinomiaalne logistiline mudel, milles on lisaks vastaja vanusele täiendavateks prediktoriteks ka sugu ja kooliskäidud aastate arv. Leidke ka riskisuhted ja nende usaldusvahemikud. Kas need muutujad seostuvad erakondlike eelistustega? Kui jah, siis millise partei puhul ja millises suunas?
 
+```{r}
+ess.mudel2 <- mlogit(partei ~ 1 | vanus + sugu + aastaid_koolis, data=ESS, shape="wide")
+summary(ess.mudel2 )
+# Riskisuhted
+data.frame(exp(coef(ess.mudel2)))
+# Riskisuhete usaldusvahemikud
+data.frame(exp(confint(ess.mudel2)))
+```
 
 
 

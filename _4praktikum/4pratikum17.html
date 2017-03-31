@@ -385,21 +385,173 @@ summary(cowles.mudel2)</code></pre>
 <li>Andmetabelist nimega neeme on Marko Neeme magistritöö (Neeme, 2012) andmed, milles uuriti 50-70-aastaste meeste suhtumist eesnäärmevähi skriiningtesti. Tunnus “”valmidus“, näitab testis osalemise valmidust (tasemed pigem jah, ja pigem ei). Lisaks on tabelis ära toodud Suure Viisiku isiksuseomadused: neurootilisus (tunnus N), ekstravertsus (E), avatus kogemusele (O), sotsiaalsus (A) ja meelekindlus (C). Koostage binaarse logistilise regressiooni mudel, mis ennustab skriiningtestis osalemise valmidust Suure Viisiku isiksuseomaduste kaudu.</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li>Esialgu tuleks saada ülevaade andmetest. Kasutage funktsiooni <em>summary</em>, argumendiks saab sisestada terve andmestiku või lihtsalt ühe veeru. Milline on oslejate keskmine vanus? Missugune on valmiduse tulemuste jaotus?<br />
-</li>
-<li>Tehke ühe tunnuse tulemustest histogramm (vt. praktikum 2).<br />
-</li>
-<li>Millised isiksusomadused omavad olulist seost valmidusega? Kas need omadused suurendavad või vähendavad testis osalemise valmidust?<br />
-</li>
-<li>Arvutage välja riskisuhted ja nende 95%-usaldusvahemikud? Milline omadus mõjutab osalemisvalmidust kõige tugevamini?<br />
-</li>
-<li>Arvutage mudeli sobitusastet näitav hii-ruut-statistik ja selle p-väärtus.<br />
-</li>
+<li>Esialgu tuleks saada ülevaade andmetest. Kasutage funktsiooni <em>summary</em>, argumendiks saab sisestada terve andmestiku või lihtsalt ühe veeru. Milline on oslejate keskmine vanus? Missugune on valmiduse tulemuste jaotus?</li>
+</ol>
+<pre class="r"><code>summary(neeme)</code></pre>
+<pre><code>##      vanus             N               E               O        
+##  Min.   :49.40   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:56.00   1st Qu.:2.500   1st Qu.:2.750   1st Qu.:2.833  
+##  Median :60.00   Median :3.000   Median :2.917   Median :3.000  
+##  Mean   :61.17   Mean   :2.869   Mean   :2.909   Mean   :3.077  
+##  3rd Qu.:67.00   3rd Qu.:3.250   3rd Qu.:3.167   3rd Qu.:3.333  
+##  Max.   :74.48   Max.   :4.167   Max.   :4.417   Max.   :4.917  
+##  NA's   :8       NA's   :3       NA's   :5       NA's   :7      
+##        A               C              valmidus  
+##  Min.   :1.000   Min.   :1.000   pigem ei :288  
+##  1st Qu.:2.917   1st Qu.:3.083   pigem jah: 74  
+##  Median :3.167   Median :3.333   NA's     :  9  
+##  Mean   :3.252   Mean   :3.468                  
+##  3rd Qu.:3.667   3rd Qu.:3.917                  
+##  Max.   :4.750   Max.   :5.000                  
+##  NA's   :5       NA's   :7</code></pre>
+<pre class="r"><code>prop.table(table(neeme$valmidus))*100#jaotus protsentides</code></pre>
+<pre><code>## 
+##  pigem ei pigem jah 
+##  79.55801  20.44199</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Tehke ühe tunnuse tulemustest histogramm (vt. praktikum 2).</li>
+</ol>
+<pre class="r"><code>library(ggplot2)
+ggplot(neeme, aes(E))+
+        geom_histogram()+
+        theme_classic()+
+        labs(x = &quot;Ekstravertsus&quot;, y = &quot;Kogus&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_bin).</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Millised isiksusomadused omavad olulist seost valmidusega? Kas need omadused suurendavad või vähendavad testis osalemise valmidust?</li>
+</ol>
+<pre class="r"><code>mudel.yl2 &lt;- glm(valmidus~N+E+O+A+C, data = neeme, family = binomial())
+summary(mudel.yl2)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = valmidus ~ N + E + O + A + C, family = binomial(), 
+##     data = neeme)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.6568  -0.5857  -0.4087  -0.2175   2.9127  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -11.90042    2.35155  -5.061 4.18e-07 ***
+## N             2.46604    0.38288   6.441 1.19e-10 ***
+## E            -1.26322    0.35198  -3.589 0.000332 ***
+## O             0.20487    0.42135   0.486 0.626813    
+## A            -0.04501    0.30816  -0.146 0.883867    
+## C             1.78794    0.38265   4.673 2.97e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 346.61  on 347  degrees of freedom
+## Residual deviance: 263.41  on 342  degrees of freedom
+##   (23 observations deleted due to missingness)
+## AIC: 275.41
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Arvutage välja riskisuhted ja nende 95%-usaldusvahemikud? Milline omadus mõjutab osalemisvalmidust kõige tugevamini?</li>
+</ol>
+<pre class="r"><code>round(exp(coef(mudel.yl2)),3)</code></pre>
+<pre><code>## (Intercept)           N           E           O           A           C 
+##       0.000      11.776       0.283       1.227       0.956       5.977</code></pre>
+<pre class="r"><code>round(exp(confint(mudel.yl2)),3)</code></pre>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<pre><code>##             2.5 % 97.5 %
+## (Intercept) 0.000  0.001
+## N           5.793 26.097
+## E           0.140  0.563
+## O           0.553  2.889
+## A           0.527  1.788
+## C           2.893 13.046</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Arvutage mudeli sobitusastet näitav hii-ruut-statistik ja selle p-väärtus.</li>
+</ol>
+<pre class="r"><code>#Siin võis tekkid osadel probleem hii-ruudu arvutamisega. 
+# Kui kustutate andmetest puuduvad andmed, siis peaks nende kahe mudeli võrdlus töötama:
+neeme2 &lt;- na.omit(neeme)#see rida loob uue andmestiku, kus ei ole NA'sid
+#Nüüd teen mõlemad mudedlid selle uue andmestikuga:
+mudel.yl2 &lt;- glm(valmidus~N+E+O+A+C, data = neeme2, family = binomial())
+mudel.yl2.null &lt;- glm(valmidus~1, data = neeme2, family = binomial())
+anova(mudel.yl2, mudel.yl2.null, test = &quot;Chisq&quot;)</code></pre>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: valmidus ~ N + E + O + A + C
+## Model 2: valmidus ~ 1
+##   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+## 1       337     260.14                          
+## 2       342     338.79 -5  -78.656 1.603e-15 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<ol start="6" style="list-style-type: lower-alpha">
 <li>Leidke mudeli pseudo-determinatsioonikordja.</li>
 </ol>
+<pre class="r"><code>NagelkerkeR2(mudel.yl2)</code></pre>
+<pre><code>## $N
+## [1] 343
+## 
+## $R2
+## [1] 0.3265317</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Tabelis ESS on lisaks tunnustele partei ja vanus veel tunnused <em>sugu</em> ja <em>aastaid_koolis</em> (vastaja kooliskäidud aastate arv). Koostage uus multinomiaalne logistiline mudel, milles on lisaks vastaja vanusele täiendavateks prediktoriteks ka sugu ja kooliskäidud aastate arv. Leidke ka riskisuhted ja nende usaldusvahemikud. Kas need muutujad seostuvad erakondlike eelistustega? Kui jah, siis millise partei puhul ja millises suunas?</li>
 </ol>
+<pre class="r"><code>ess.mudel2 &lt;- mlogit(partei ~ 1 | vanus + sugu + aastaid_koolis, data=ESS, shape=&quot;wide&quot;)
+summary(ess.mudel2 )</code></pre>
+<pre><code>## 
+## Call:
+## mlogit(formula = partei ~ 1 | vanus + sugu + aastaid_koolis, 
+##     data = ESS, shape = &quot;wide&quot;, method = &quot;nr&quot;, print.level = 0)
+## 
+## Frequencies of alternatives:
+##     IRL    Kesk  Reform 
+## 0.19940 0.35801 0.44260 
+## 
+## nr method
+## 4 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 6.7E-08 
+## gradient close to zero 
+## 
+## Coefficients :
+##                         Estimate Std. Error t-value  Pr(&gt;|t|)    
+## Kesk:(intercept)       1.7419842  0.6926221  2.5151   0.01190 *  
+## Reform:(intercept)     1.5438115  0.6368543  2.4241   0.01535 *  
+## Kesk:vanus             0.0114439  0.0069208  1.6536   0.09822 .  
+## Reform:vanus          -0.0097754  0.0065373 -1.4953   0.13483    
+## Kesk:suguN             0.3826106  0.2277829  1.6797   0.09301 .  
+## Reform:suguN           0.3926685  0.2140748  1.8343   0.06662 .  
+## Kesk:aastaid_koolis   -0.1538409  0.0365401 -4.2102 2.552e-05 ***
+## Reform:aastaid_koolis -0.0367646  0.0332952 -1.1042   0.26951    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -664.52
+## McFadden R^2:  0.04402 
+## Likelihood ratio test : chisq = 61.197 (p.value = 2.5699e-11)</code></pre>
+<pre class="r"><code># Riskisuhted
+data.frame(exp(coef(ess.mudel2)))</code></pre>
+<pre><code>##                       exp.coef.ess.mudel2..
+## Kesk:(intercept)                  5.7086594
+## Reform:(intercept)                4.6824035
+## Kesk:vanus                        1.0115096
+## Reform:vanus                      0.9902722
+## Kesk:suguN                        1.4661070
+## Reform:suguN                      1.4809274
+## Kesk:aastaid_koolis               0.8574084
+## Reform:aastaid_koolis             0.9639030</code></pre>
+<pre class="r"><code># Riskisuhete usaldusvahemikud
+data.frame(exp(confint(ess.mudel2)))</code></pre>
+<pre><code>##                          X2.5..   X97.5..
+## Kesk:(intercept)      1.4688355 22.186822
+## Reform:(intercept)    1.3439324 16.313992
+## Kesk:vanus            0.9978817  1.025324
+## Reform:vanus          0.9776649  1.003042
+## Kesk:suguN            0.9381591  2.291157
+## Reform:suguN          0.9734485  2.252965
+## Kesk:aastaid_koolis   0.7981504  0.921066
+## Reform:aastaid_koolis 0.9030096  1.028903</code></pre>
 </div>
 
 
