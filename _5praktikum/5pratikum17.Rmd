@@ -4,9 +4,9 @@ title: 'Kvantitatiivsed mudelid käitumisteadustes - praktikum nr 5: eksploratii
 author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
 date: "12 aprill 2017"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 # "Päris" faktoranalüüs ja peakomponentide analüüs
@@ -160,7 +160,7 @@ t.test(skoorid$A ~ bfi$gender)
 Erinevus on statistiliselt oluline. T-testi väljundi kahelt viimaselt realt näeme, et numbriga 1 kodeeritud grupi keskmine sotsiaalsuse skoor on u -0.25 ja numbriga 2 tähistatud grupi keskmine skoor on u 0.11 ehk kõrgem. Tabelist bfi.dictionary võime näha, et väärtus 1 tähistab muutuja *gender* puhul mehi ja väärtus 2 naisi. 
 
 ### Ülesanne 2
-Uurige regressioonimudeli abil ka, kas sotsiaalsuse skoorid seostuvad vastaja vanusega.
+Uurige regressioonimudeli abil, kas sotsiaalsuse skoorid seostuvad vastaja vanusega.
 ```{r, echo =F, eval =F}
 summary(lm(skoorid$A ~ bfi$age))
 ```
