@@ -42,3 +42,12 @@ Teemad: Logistiline regressioonanalüüs.
 
 * [Praktikumi materjalid](../4praktikum)
 * [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAWUViUVdqY3Y0cjQ){:target="_blank"}
+
+## Praktikum 5
+
+13.04.2017 
+
+Teemad: Faktoranalüüs.
+
+* [Praktikumi materjalid](../5praktikum)
+* [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAVFJVNURVaVpOcE0){:target="_blank"}
