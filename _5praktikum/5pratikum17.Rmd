@@ -4,13 +4,19 @@ title: 'Kvantitatiivsed mudelid käitumisteadustes - praktikum nr 5: eksploratii
 author: "Martin Kolnes, Dmitri Rozgonjuk, Karin Täht"
 date: "12 aprill 2017"
 output:
-  html_document: default
-  pdf_document: default
   word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
-# "Päris" faktoranalüüs ja peakomponentide analüüs
-Nagu ilmselt teate, on olemas 2 lähedast meetodit: **faktoranalüüs** ja **peakomponentide analüüs**. Mõlema eesmärgiks on taandada suurem muutujatekogum väikseks arvuks liitmuutujateks. Sageli annavad mõlemad sarnase lõpptulemuse, kuid vahel võivad meetodite tulemused ka erineda. Seda eriti, kui analüüsi kaasata vähem kui 20 muutujat ja esineb kommunaliteete väärtusega $< 0.4$. Väikese muutujate arvu ja madalate kommunaliteetide korral on soovitatav eelistada faktoranalüüsi.
+# Faktoranalüüs ja peakomponentide analüüs
+Nagu ilmselt teate, on olemas 2 lähedast meetodit: **faktoranalüüs** ja **peakomponentide analüüs**. Mõlema eesmärgiks on taandada suurem muutujatekogum väikseks arvuks liitmuutujateks. Sageli annavad mõlemad sarnase lõpptulemuse, kuid vahel võivad meetodite tulemused ka erineda. 
+
+**Faktoranalüüsi** eesmärk on kirjeldada mingit suuremat hulka tunnuseid väiksema arvu hüpoteetiliste tunnuste ehk faktorite kaudu.  
+**Peakomponentide analüüsi** eesmärk on välja selgitada väiksem hulk komponente, mis vastutavad esialgsete muutujate varieeruvuse  eest.   
+Faktoranalüüs ja peakomponentide analüüs on matemaatilises mõttes erinevad. Faktoranalüüsi käigus eeldatakse, et mõõdetud muutujate varieeruvuse eest vastutavad tekkivad ühisfaktorid ja unikaalsed faktorid. Peakomponentide analüüsi käigus tekitatakse uued muutujad lihtsalt kui lineaarkombinatsioonid mõõdetud muutujatest (vaadake loengu konspektist jooniseid).
+Faktoranalüüsi on mõistlik kasutada, kui uurija on huvitatud faktoritest, mis vastutavad teatud hulga mõõdetud muutujate varieeruvuse eest. Peakomponentide analüüsi tuleks kasutada, kui uurija soovib lihtsalt andmeid taandada.
+
 
 
 # Faktoranalüüs 
