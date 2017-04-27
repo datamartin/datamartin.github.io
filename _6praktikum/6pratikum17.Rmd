@@ -52,15 +52,15 @@ Selle käsu jooksutamine peaks avama *Help* akna selle andmestiku kirjeldusega. 
 - x8 - Speeded counting of dots  
 - x9 - Speeded discrimination straight and curved capitals  
 
-#Eeltöö
-Lavaani mooduli funktsioonidega tutvumiseks teeme alustuseks suhteliselt lihtsa kinnitava **faktoranalüüsi mudeli**, milles üheksa vaadeldud muutuja abil defineerime 3 latentset muutujat (faktorit). Antud juhul on tegemist suhteliselt lihtsa mudeliga, aga tihti võivad mudelid minna üsna keeruliseks. Sellest tulenevalt on reeglina mõistlik enne andmete analüüsimise kallale asumist teha mudelisse kaasatavate muutujate vaheliste seoste kohta skeem (nt paberi peal). Praegusel juhul näeks mudeli diagramm välja järgnev.
+#Näide 1. Kinnitava faktoranalüüsi mudeli rakendamine  
+Lavaani mooduli funktsioonidega tutvumiseks teeme alustuseks suhteliselt lihtsa **kinnitava faktoranalüüsi mudeli**, milles üheksa vaadeldud muutuja abil defineerime 3 latentset muutujat (faktorit). Antud juhul on tegemist suhteliselt lihtsa mudeliga, aga tihti võivad mudelid minna üsna keeruliseks. Sellest tulenevalt on reeglina mõistlik enne andmete analüüsimise kallale asumist teha mudelisse kaasatavate muutujate vaheliste seoste kohta skeem (nt paberi peal). Praegusel juhul näeks mudeli diagramm välja järgnev.
 
 <div style="width:400px; height=400px">
 ![Joonis 1. ](plot1.png)
 </div>
 
 
-Jooniselt on näha, et vaadeldud muutujad x1-x3 mõõdavad latentset muutujat nimega *visual*, x4-x6 latentset muutujat nimega *textual* ja x7-x9 latentset muutujat nimega *speed*. Vastavalt tavale tähistavad SEM-i diagrammidel nelinurgad vaadeldud muutujaid ja ringid või ellipsid latentseid muutujaid. Latentsete muutujate vahelised kaared tähistavad nendevahelisi korrelatsioone. Väikesed noolekesed muutujate juures tähistavad dispersioone, mis samuti kuuluvad mudeli poolt välja arvutatavate parameetrite hulka. Vaadeldud muutujate puhul on tegemist jääkdispersiooniga ehk selle osaga muutuja variatiivsusest, mis ei ole määratud latentse faktori poolt. Latentsetele muutujatele on vaja anda ka skaala ja selleks fikseeritakse iga faktori puhul ühe sellele laaduva vaadeldud muutuja laadung. Seda tähistavad number 1-d mõne noole juures.
+Jooniselt on näha, et vaadeldud muutujad x1-x3 mõõdavad latentset muutujat nimega *visual*, x4-x6 latentset muutujat nimega *textual* ja x7-x9 latentset muutujat nimega *speed*. Vastavalt tavale tähistavad SEM-i diagrammidel nelinurgad **vaadeldud muutujaid** ja ringid või ellipsid **latentseid muutujaid**. Latentsete muutujate vahelised kaared tähistavad nendevahelisi korrelatsioone. Väikesed noolekesed muutujate juures tähistavad dispersioone, mis samuti kuuluvad mudeli poolt välja arvutatavate parameetrite hulka. Vaadeldud muutujate puhul on tegemist jääkdispersiooniga ehk selle osaga muutuja variatiivsusest, mis ei ole määratud latentse faktori poolt. Latentsetele muutujatele on vaja anda ka skaala ja selleks fikseeritakse iga faktori puhul ühe sellele laaduva vaadeldud muutuja laadung. Seda tähistavad number 1-d mõne noole juures.
 
   
 Mudeli diagramm aitab ka hinnata, kas analüüsi kaasatavas andmestikus on piisavalt infot, et arvutada välja kõik need mudeli parameetrid, mida meil vaja läheb. Jooniselt saame kokku lugeda, et meil on vaja hinnata 6 faktorlaadungit (9 vaadeldavat muutujat miinus need 3, mille laadungid on fikseeritud), 3 korrelatsiooni ja 12 dispersiooni. See teeb kokku 21 parameetrit. Maksimaalne parameetrite arv sõltub mudelisse kaasatavate vaadeldud muutujate arvust ja seda saab arvutada valemi p(p+1)/2 abil, milles "p" on mudelisse kaasatavate vaadeldud muutujate arv. Praegusel juhul anname mudelile ette 9 muutujat ja  sellest tulenevalt maksimaalne vabade parameetrite arv mudelis oleks $9(9+1)/2=45$. Järelikult pole antud juhul meil probleemi sellega, et tahaksime mudelil lasta hinnata liiga suurt arvu vabu parameetreid. 
@@ -75,7 +75,7 @@ $sõltuv muutuja \sim sõltumatu.muutuja$
  
 **2.** Latentse muutuja defineerimine (kus x1, x2 ja x3 on latentsele tunnusele laaduvad vaadeldud muutujad):   
 
-$latentne.muutuja =~ x1 + x2 + x3$
+$latentne.muutuja =\sim x1 + x2 + x3$
 
 **3.** Muutujate-vahelise korrelatsiooni saame mudelisse kahekordse tilde abil: 
    
@@ -113,22 +113,28 @@ Sobitusastme indeksite järel tuleb viimasena tabel mudeli parameetrite hinnangu
 
 Nagu näha on muutujate x1, x4 ja x7 standardiseerimata laadung 1.000 ja mõned näitajad on neist ridadest puudu. See tuleb sellest, struktuurivõrrandite mudelite puhul tuleb latentsele muutjale anda skaala. Kõige sagedamini kasutatav võimalus selleks on anda mõne laaduva vaadeldud muutuja skaala fikseerides selle sandardiseerimata laadungi 1-ga. Lavaan on seda automaatselt teinud, fikseerides iga latentse muutuja puhul esimese indikaatori standardiseerimata laadungi. Kuidas parameetreid tõlgendada? Standardiseerimata laadungid on tõlgendatavad regressioonikoefitsientidena. Kui muutuja x2 standardiseerimata laadung faktorile visual on 0.554 siis võib faktori väärtuse 1-punktilise suurenemise korral oodata, et x2 suureneb 0.554 punkti võrra.
 
-Ainult ühele faktorile laaduvate vaadeldud muutujate puhul võib standardiseeritud laadungeid tõlgendada faktori ja muutuja vahelise korrelatsioonikordajana. Nagu korrelatsioonikordaja puhul ikka saame seda ruutu võttes kindlaks teha kui suure osa tunnuse variatiivsusest seos ära määrab. Tunnuse x2 puhul on korrelatsioon faktoriga visual 0.424 ja faktor määrab ära 0.42422=0.179 ehk umbes 18 protsenti tunnuse x2 variatiivsusest. Muutujate puhul, mis laaduvad rohkem kui ühele faktorile (praeguses mudelis meil selliseid pole) ei saa standardiseeritud laadungeid tõlgendada korrelatsioonikordajatena vaid standardiseeritud regressioonikordajatena, mille puhul hoitakse korreleeritud faktoreid kontrolli all. Neid ruutu võttes ei saa kindlaks teha seletatava variatiivsuse osakaalu. Alajaotuses *Covariances* olevad standardiseerimata parameetrid kujutavad endas faktorite-vahelisi kovariatsioonikordjaid ja standardiseeritud parameetrid korrelatsioonikordajaid. Antud mudeli puhul võib näiteks näha et faktori visual korrelatsioon faktoriga textual on 0.459 ja faktoriga speed 0.471. Vaadeldud muutujate puhul näitavad dispersioonid (*Variances*) standardiseeritud kujul seda osa tunnuse variatiivsusest, mida faktor ei seleta. Nt tunnuse x2 puhul ei suuda faktor visual seletada tervelt 82.1 protsenti variatiivsusest. Parameetrite tabeli puhul tasub ka kontrollida, et ei esineks negatiivseid jääkdispersioone ja standardiseeritud parameetreid absoluutväärtusega > 1. Selliseid väärtusi ei ole võimalik tõlgendada ja nende esinemine annab märku probleemidest mudeli või andmetega (nt liiga väike valim või liiga tugevalt korreleeritud muutujad). Mudeli väljundit saab tellida ka osade kaupa. Seda võib vaja minna näiteks siis kui soovime teada saada mõnda sellist sobitusastme näitjat, mida funktsioon summary välja ei trükkinud. Nt üks suhteliselt sageli raporteeritav sobitusastme näitaja on GFI (*goodness of fit index*, hea väärtus 0.95 ja üles). Selle ja suure hulga muid sobitusindekseid saame kätte funktsiooni fitMeasures abil:
+Ainult ühele faktorile laaduvate vaadeldud muutujate puhul võib standardiseeritud laadungeid tõlgendada faktori ja muutuja vahelise korrelatsioonikordajana. Nagu korrelatsioonikordaja puhul ikka saame seda ruutu võttes kindlaks teha kui suure osa tunnuse variatiivsusest seos ära määrab. Tunnuse x2 puhul on korrelatsioon faktoriga visual 0.424 ja faktor määrab ära 0.42422=0.179 ehk umbes 18 protsenti tunnuse x2 variatiivsusest. Muutujate puhul, mis laaduvad rohkem kui ühele faktorile (praeguses mudelis meil selliseid pole) ei saa standardiseeritud laadungeid tõlgendada korrelatsioonikordajatena vaid standardiseeritud regressioonikordajatena, mille puhul hoitakse korreleeritud faktoreid kontrolli all. Neid ruutu võttes ei saa kindlaks teha seletatava variatiivsuse osakaalu.   
 
-```{r}
+Alajaotuses *Covariances* olevad standardiseerimata parameetrid kujutavad endas faktorite vahelisi kovariatsioonikordjaid ja standardiseeritud parameetrid korrelatsioonikordajaid. Antud mudeli puhul võib näiteks näha et faktori visual korrelatsioon faktoriga textual on 0.459 ja faktoriga speed 0.471. Vaadeldud muutujate puhul näitavad dispersioonid (*Variances*) standardiseeritud kujul seda osa tunnuse variatiivsusest, mida faktor ei seleta. Nt tunnuse x2 puhul ei suuda faktor visual seletada tervelt 82.1 protsenti variatiivsusest. 
+  
+    
+Parameetrite tabeli puhul tasub ka kontrollida, et ei esineks negatiivseid jääkdispersioone ja standardiseeritud parameetreid absoluutväärtusega > 1. Selliseid väärtusi ei ole võimalik tõlgendada ja nende esinemine annab märku probleemidest mudeli või andmetega (nt liiga väike valim või liiga tugevalt korreleeritud muutujad).  
+Mudeli väljundit saab tellida ka osade kaupa. Seda võib vaja minna näiteks siis kui soovime teada saada mõnda sellist sobitusastme näitjat, mida funktsioon *summary* välja ei trükkinud. Nt üks suhteliselt sageli raporteeritav sobitusastme näitaja on GFI (*goodness of fit index*, hea väärtus 0.95 ja üles). Selle ja suure hulga muid sobitusindekseid saame kätte funktsiooni *fitMeasures* abil:
+
+```{r, eval = F}
 fitMeasures(fit1)
 ```
 
 
 Aga eraldi saab tellida ka standardiseerimata parameetrite hinnanguid...
 
-```{r}
+```{r, eval = F}
 parameterEstimates(fit1)
 ```
 
 ... ja standardiseeritud hinnanguid.
 
-```{r}
+```{r, eval = F}
 standardizedSolution(fit1)
 ```
 
@@ -208,7 +214,7 @@ y4 ~~ y8
 y6 ~~ y8"
 ```
 
-Sobitame mudeli andmetele ja uurime väljundit. Kuna mudel sisaldab ka regressioonseoseid, siis kasutame sobitamiseks funktsiooni sem. (Kuigi tegelikult teevad vähemalt praeguse seisuga funktsioonid *cfa* ja sem sama asja, siis tulevikus võib see olukord muutuda.) Kas mudel sobib andmetega?
+Sobitame mudeli andmetele ja uurime väljundit. Kuna mudel sisaldab ka regressioonseoseid, siis kasutame sobitamiseks funktsiooni sem. Kas mudel sobib andmetega?
 
 ```{r}
 fit3 <- sem(mudel3, data=PoliticalDemocracy)
