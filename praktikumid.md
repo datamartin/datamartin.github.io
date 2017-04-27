@@ -51,3 +51,12 @@ Teemad: Faktoranalüüs.
 
 * [Praktikumi materjalid](../5praktikum)
 * [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAVFJVNURVaVpOcE0){:target="_blank"}
+
+## Praktikum 6
+
+28.04.2017 
+
+Teemad: Struktuurvõrrandite mudelid.
+
+* [Praktikumi materjalid](../6praktikum)
+* [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAb0haZUxfcnFjRTA){:target="_blank"}
