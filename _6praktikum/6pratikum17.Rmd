@@ -318,6 +318,17 @@ names(suur.viisik)
 ```
 
 Uurige ka mudeli parameetrite tabelit. Vaadake iga faktori puhul, millised vaadeldud muutujatest laaduvad faktorile kõige tugevamalt ja millised kõige nõrgemalt? Millised faktorid on omavahel kõige tugevamalt ja millised kõige nõrgemalt korreleeritud? Uurige jääkdispersioonide abil, milliseid vaadeldud muutujad seletab antud mudel kõige halvemini?
+```{r}
+mudelBig5 <- "
+# defineerime latentsed tunnused
+neurootilisus =~ N1 + N2 + N3 + N4 + N5 + N6
+ekstravertsus =~ E1 + E2 + E3 + E4 + E5 + E6
+avatus =~ O1 + O2 + O3 + O4 + O5 + O6
+sotsiaalsus =~ A1 + A2 + A3 + A4 + A5 + A6
+meelekindlus =~ C1 + C2 + C3 + C4 + C5 + C6 "
+fitBig5 <- cfa(mudelBig5, data=suur.viisik)
+summary(fitBig5)
+```
 
 2. Teine ülesanne on laenatud Rex Kline'i raamatust Principles and *Practice of Structural Equation Modeling* ja kasutatavad andmed parinevad algselt uurimusest, mille autoriteks on Roth jt (1989). Maatriks nimega *illness.cov* sisaldab 5 muutuja vahelisi kovariatsioonikordajaid. Muutujad vastavad
 viie küsimustiku skoorile ja nende sisu on järgmine:
@@ -337,3 +348,22 @@ Struktuurvõrrandite mudeli koostamiseks võib toorandmete asemel kasutada ka ko
 
 Kas kõik mudelis esinevad seosed on statistiliselt olulised? Lisage mudelisse täiendav regressioonseos, milles sõltumatuks muutujaks on *fitness* ja sõltuvaks muutujaks *stress*. Mis juhtub mudeli sobitusastmega?
  
+ 
+```{r, eval = F}
+illness.cov <- read.csv("illness.cov.csv", header = TRUE, sep = ";",row.names=1, stringsAsFactors = FALSE)
+mudel5 <- "
+# regressioonseosed latentsete tunnuste vahel
+exercise ~ hardiness
+fitness ~ exercise + stress
+illness ~ fitness + stress
+stress ~ fitness + hardiness
+# jääkdispersioonide vahelised korrelatsioonid
+hardiness ~~ exercise
+"
+
+# Kuna praegu tugineb analüüs kovariatsioonimaatriksile, mitte toorandmetele
+# ja sellisel juhul kasutab mudeli sobitamise käsk natuke teisi argumente, 
+# siis on sobitamine siin praegu ära tehtud
+fit5 <- sem(mudel5, sample.cov=illness.cov, sample.nobs=373, fixed.x=FALSE)
+summary(fit5)
+```

@@ -1,6 +1,6 @@
 ## Kvantitatiivsed mudelid käitumisteadustes
 ## Praktikum nr 6: struktuurivõrrandite mudelid I
-## 29.04.2016
+## 28.04.2016
 
 # installeerime mudelite tegemiseks lisamooduli lavaan
 #install.packages("lavaan")
