@@ -60,3 +60,11 @@ Teemad: Struktuurvõrrandite mudelid.
 
 * [Praktikumi materjalid](../6praktikum)
 * [Andmed](https://drive.google.com/open?id=0B2UdK0gBuiRAb0haZUxfcnFjRTA){:target="_blank"}
+
+## Praktikum 7
+
+12.05.2017 
+
+Teemad: Andmete töötlemine (paketid plyr, dplyr), ANOVA (pakett ez, funktsioon aov).
+* [Praktikumi konpspekt](http://rpubs.com/kolnesm/praktikum7){:target="_blank"}
+* [ANOVA](https://rpubs.com/kolnesm/anova){:target="_blank"}
